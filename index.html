@@ -1,94 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Javascript Form Submit Example</title>
-<!-- Include CSS File Here
-<link rel="stylesheet" href="css/xxx.css"/>
--->
-<!-- Include JS File Here
-<script src="js/xxx.js"></script>
--->
-<script>
-function submit_by_id() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    if (validation()) {
-        // Submit form with id function.
-        document.getElementById("form_id").submit(); // form submission
-        alert("Name : " + name + " \n" +
-            "Email : " + email + " \n" +
-            "Form Id : " + document.getElementById("form_id").getAttribute("id") + "\n\n" +
-            "Form Submitted Successfully");
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>test</title>
+  <style>
+    .outer {
+      width: 500px;
+      height: 200px;
+      background: red;
     }
-}
-
-function submit_by_name() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    if (validation()) {
-        // Submit form with name function.
-        var x = document.getElementsByName('form_name');
-        x[0].submit(); // form submission
-        alert(" Name : " + name + " \n" +
-            "Email : " + email + " \n" +
-            "Form Name : " + document.getElementById("form_id").getAttribute("name") + "\n\n" +
-            "Form Submitted Successfully");
+    
+    .inner {
+      width: 300px;
+      height: 100px;
+      background: green;
     }
-}
-
-function submit_by_class() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    if (validation()) {
-        // Submit form with class function.
-        var x = document.getElementsByClassName("form_class");
-        x[0].submit(); // form submission
-        alert("Name : " + name + " \n" +
-            "Email : " + email + " \n" +
-            "Form Class : " + document.getElementById("form_id").getAttribute("class") + "\n\n" +
-            "Form Submitted Successfully");
-    }
-}
-
-function submit_by_tag() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    if (validation()) {
-        // Submit form with HTML <form> tag function.
-        var x = document.getElementsByTagName("form");
-        x[0].submit(); // form submission
-        alert("Name : " + name + " \n" +
-            "Email : " + email + " \n" +
-            "Form Tag : <form>\n\n" +
-            "Form Submitted Successfully");
-    }
-}
-
-function validation() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    if (name === "" || email === "") {
-        alert("Please fill all fields...!!!!!!");
-        return false;
-    } else {
-        return true;
-    }
-}
-</script>
+  </style>
 </head>
 <body>
-<div class="container">
-<div class="main">
-<h2>Javascript Form Submit Example</h2>
-<form action="#" method="post" name="form_name" id="form_id" class="form_class" >
-    <label>Name :</label><input type="text" name="name" id="name" placeholder="Name" />
-    <label>Email :</label><input type="text" name="email" id="email" placeholder="Valid Email" />
-    <input type="button" name="submit_id" id="btn_id" value="Submit by Id" onclick="submit_by_id()"/>
-    <input type="button" name="submit_name" id="btn_name" value="Submit by Name" onclick="submit_by_name()"/>
-    <input type="button" name="submit_class" id="btn_class" value="Submit by Class" onclick="submit_by_class()"/>
-    <input type="button" name="submit_tag" id="btn_tag" value="Submit by Tag" onclick="submit_by_tag()"/>
-</form>
-</div>
-</div>
+    <div class='outer'>
+      <div class='inner'>
+        <button class='btn'>click me</button>
+      </div>
+    </div>
+    <div>
+    </div>
+  </form>
+  <script>
+    addEvent('.outer'); // 呼叫函式
+    addEvent('.inner');
+    addEvent('.btn');
+    
+    function addEvent(className) {
+      document.querySelector(className)
+        .addEventListener('click', function(){
+          console.log(className)
+      })// 分開寫方便 debug 用 
+    };
+  </script>
 </body>
 </html>
   
