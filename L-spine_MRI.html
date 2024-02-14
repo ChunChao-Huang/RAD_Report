@@ -188,20 +188,38 @@ Neural foraminal narrowing:
 
 
 <!-- Others -->
-<p>Other findings:<br><textarea rows="5" cols="150" name="Others" value=""></textarea></br><p>
+<p>Other findings:<br><textarea rows="10" cols="150" name="Others" value=""></textarea></br><p>
 		
-<br><button type="button" onclick="activeFunction()">Show Final Report</button><input type="reset" value="Clear"></br>
+<br><button type="button" onclick="activeFunction()">Show Final Report</button><input type="reset" value="Clear"><button onclick="copyFunction()">Copy Report</button></br>
 </form>
 
 
 <p>Final Report:</p>
-<p>MRI of the lumbar spine shows the following findings:</p>
- 		<p id="Abnormal_1"></p>	<p id="Abnormal_2"></p>	<p id="Abnormal_3"></p>	<p id="Abnormal_4"></p>	<p id="Abnormal_5"></p>
-		<p id="Others"></p>
-		
-		
+<textarea rows="20" cols="150" id="Final_Report" name="Final_Report"></textarea>
+
+
+<!-- Old --> <p id="Abnormal_1"></p>	<p id="Abnormal_2"></p>	<p id="Abnormal_3"></p>	<p id="Abnormal_4"></p>	<p id="Abnormal_5"></p>
+<!-- Old --> <p id="Others"></p>
+			
 		
   <script>
+
+	   <!-- Copy Function -->
+  function copyFunction() {
+  // Get the text field
+  var copyText = document.getElementById("Final_Report");
+
+  // Select the text field
+  copyText.select();
+   copyText.setSelectionRange(0, 99999); //For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  // alert("The report has been copied.");
+}   
+  
 function activeFunction() {
 <!-- L1-2 -->
   var link1 = "Unremarkable.";
@@ -333,14 +351,18 @@ function activeFunction() {
   
   var Others = document.getElementsByName('Others')[0].value;
       
-  document.getElementById('Abnormal_1').innerHTML = "Level L1-L2: " + Final_Condition1 + link1 + Result1_1 + Result1_2 + Result1_3 + ".</br>";
-  document.getElementById('Abnormal_2').innerHTML = "Level L2-L3: " + Final_Condition2 + link2 + Result2_1 + Result2_2 + Result2_3 + ".</br>";
-  document.getElementById('Abnormal_3').innerHTML = "Level L3-L4: " + Final_Condition3 + link3 + Result3_1 + Result3_2 + Result3_3 + ".</br>";
-  document.getElementById('Abnormal_4').innerHTML = "Level L4-L5: " + Final_Condition4 + link4 + Result4_1 + Result4_2 + Result4_3 + ".</br>";
-  document.getElementById('Abnormal_5').innerHTML = "Level L5-S1: " + Final_Condition5 + link5 + Result5_1 + Result5_2 + Result5_3 + ".</br>";
+ <!-- Old --> document.getElementById('Abnormal_1').innerHTML = "Level L1-L2: " + Final_Condition1 + link1 + Result1_1 + Result1_2 + Result1_3 + ".</br>";
+ <!-- Old --> document.getElementById('Abnormal_2').innerHTML = "Level L2-L3: " + Final_Condition2 + link2 + Result2_1 + Result2_2 + Result2_3 + ".</br>";
+ <!-- Old --> document.getElementById('Abnormal_3').innerHTML = "Level L3-L4: " + Final_Condition3 + link3 + Result3_1 + Result3_2 + Result3_3 + ".</br>";
+ <!-- Old --> document.getElementById('Abnormal_4').innerHTML = "Level L4-L5: " + Final_Condition4 + link4 + Result4_1 + Result4_2 + Result4_3 + ".</br>";
+ <!-- Old --> document.getElementById('Abnormal_5').innerHTML = "Level L5-S1: " + Final_Condition5 + link5 + Result5_1 + Result5_2 + Result5_3 + ".</br>";
 		
-	
-  document.getElementById('Others').innerHTML = "Other findings:</br>" + Others;  
+  document.getElementById('Final_Report').innerHTML = "MRI of the lumbar spine shows the following findings:\nLevel L1-L2: " + Final_Condition1 + link1 + Result1_1 + Result1_2 + Result1_3 + "\n" + "Level L2-L3: " + Final_Condition2 + link2 + Result2_1 + Result2_2 + Result2_3 + "\n" + "Level L3-L4: " + Final_Condition3 + link3 + Result3_1 + Result3_2 + Result3_3 + "\n" + "Level L4-L5: " + Final_Condition4 + link4 + Result4_1 + Result4_2 + Result4_3 + "\n" + "Level L5-S1: " + Final_Condition5 + link5 + Result5_1 + Result5_2 + Result5_3 + "\n\nOther findings:\n" + Others;  
+
+
+     <!-- Others --> document.getElementById('Others').innerHTML = "Other findings:</br>" + Others;  
+	 
+
 }
   </script>
 </body>
