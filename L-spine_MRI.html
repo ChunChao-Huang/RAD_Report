@@ -187,10 +187,17 @@ Neural foraminal narrowing:
 <input name="Nerve_root_5" type="radio" value="Right nerve root indentation." />Right</p>
 
 
+<!-- Additional findings -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p>Additional findings:</p>
+<input name="Scoliosis" type="checkbox" value="- Scoliosis." />Scoliosis.
+<input name="Endplate" type="checkbox" value="- Degenerative endplate change." />Degenerative endplate change.
+
+
 <!-- Others -->
 <p>Other findings:<br><textarea rows="10" cols="150" name="Others" value=""></textarea></br><p>
 		
-<br><button type="button" onclick="activeFunction()">Show Final Report</button>&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear">
+<br><button type="button" onclick="activeFunction()">Show Final Report</button>&nbsp;&nbsp;&nbsp;<button type="button" onclick="refresh()">Clear</button>
 </form>
 <button onclick="copyFunction()">Copy Report</button>
 
@@ -203,6 +210,11 @@ Neural foraminal narrowing:
 			
 		
   <script>
+<!-- reload page -->
+function refresh()   
+{   
+window.location.reload();   
+}   
 
 	   <!-- Copy Function -->
   function copyFunction() {
@@ -228,23 +240,36 @@ function activeFunction() {
   var i;
   for (i = 0; i < Condition1_1.length; i++){
   if (Condition1_1[i].checked){
-  Final_Condition1+=" "+Condition1_1[i].value;
-  var link1 = " resulting in ";  }
+  Final_Condition1+= Condition1_1[i].value+" ";
+  var link1 = "";}
   }
   
   var Direction1 =  document.form.Direction_1;
   var Grade1 = document.form.Grade_1;
   if (Direction1.value == ""){}else{
-  Final_Condition1+=" "+ Grade1.value + Direction1.value;
-  var link1 = " resulting in ";  }
+  Final_Condition1+= Grade1.value + Direction1.value;
+  var link1 = "";
+  }
   
   
   var Result1_1 =""; 
   if (document.form.Sac_1.checked){
-  var Result1_1 = document.form.Sac_1.value;
+  var Result1_1 = document.form.Sac_1.value + " ";
+  var link1 = " resulting in ";
   }
-  var Result1_2 = document.form.Neural_foramina_1.value;
+  var Result1_2 = "";
+  if (document.form.Neural_foramina_1.value){  
+  var Result1_2 = document.form.Neural_foramina_1.value + " ";
+  var link1 = " resulting in ";
+  }
+  
+  var Result1_3 = "";
+  if (document.form.Nerve_root_1.value){
   var Result1_3 = document.form.Nerve_root_1.value;
+  var link1 = " resulting in ";
+  }
+    
+  var Final_Result1 = Result1_1 + Result1_2 + Result1_3;
   
 <!-- L2-3 -->
   var link2 = "Unremarkable.";
@@ -253,24 +278,38 @@ function activeFunction() {
   var i;
   for (i = 0; i < Condition2_1.length; i++){
   if (Condition2_1[i].checked){
-  Final_Condition2+=" "+Condition2_1[i].value;
-  var link2 = " resulting in ";  }
+  Final_Condition2+= Condition2_1[i].value+" ";
+  var link2 = "";}
   }
   
   var Direction2 =  document.form.Direction_2;
   var Grade2 = document.form.Grade_2;
   if (Direction2.value == ""){}else{
-  Final_Condition2+=" "+ Grade2.value + Direction2.value;
-  var link2 = " resulting in ";  }
+  Final_Condition2+= Grade2.value + Direction2.value;
+  var link2 = "";
+  }
   
   
   var Result2_1 =""; 
   if (document.form.Sac_2.checked){
-  var Result2_1 = document.form.Sac_2.value;
+  var Result2_1 = document.form.Sac_2.value + " ";
+  var link2 = " resulting in ";
   }
-  var Result2_2 = document.form.Neural_foramina_2.value;
+  var Result2_2 = "";
+  if (document.form.Neural_foramina_2.value){  
+  var Result2_2 = document.form.Neural_foramina_2.value + " ";
+  var link2 = " resulting in ";
+  }
+  
+  var Result2_3 = "";
+  if (document.form.Nerve_root_2.value){
   var Result2_3 = document.form.Nerve_root_2.value;
-
+  var link2 = " resulting in ";
+  }
+    
+  var Final_Result2 = Result2_1 + Result2_2 + Result2_3;
+  
+  
 <!-- L3-4 -->
   var link3 = "Unremarkable.";
   var Condition3_1 = document.form.Condition_3;
@@ -278,23 +317,38 @@ function activeFunction() {
   var i;
   for (i = 0; i < Condition3_1.length; i++){
   if (Condition3_1[i].checked){
-  Final_Condition3+=" "+Condition3_1[i].value;
-  var link3 = " resulting in ";  }
+  Final_Condition3+= Condition3_1[i].value+" ";
+  var link3 = "";}
   }
   
   var Direction3 =  document.form.Direction_3;
   var Grade3 = document.form.Grade_3;
   if (Direction3.value == ""){}else{
-  Final_Condition3+=" "+ Grade3.value + Direction3.value;
-  var link3 = " resulting in ";  }
+  Final_Condition3+= Grade3.value + Direction3.value;
+  var link3 = "";
+  }
   
   
   var Result3_1 =""; 
   if (document.form.Sac_3.checked){
-  var Result3_1 = document.form.Sac_3.value;
+  var Result3_1 = document.form.Sac_3.value + " ";
+  var link3 = " resulting in ";
   }
-  var Result3_2 = document.form.Neural_foramina_3.value;
+  var Result3_2 = "";
+  if (document.form.Neural_foramina_3.value){  
+  var Result3_2 = document.form.Neural_foramina_3.value + " ";
+  var link3 = " resulting in ";
+  }
+  
+  var Result3_3 = "";
+  if (document.form.Nerve_root_3.value){
   var Result3_3 = document.form.Nerve_root_3.value;
+  var link3 = " resulting in ";
+  }
+    
+  var Final_Result3 = Result3_1 + Result3_2 + Result3_3;
+
+
 
 <!-- L4-5 -->
   var link4 = "Unremarkable.";
@@ -303,23 +357,38 @@ function activeFunction() {
   var i;
   for (i = 0; i < Condition4_1.length; i++){
   if (Condition4_1[i].checked){
-  Final_Condition4+=" "+Condition4_1[i].value;
-  var link4 = " resulting in ";  }
+  Final_Condition4+= Condition4_1[i].value+" ";
+  var link4 = "";}
   }
   
   var Direction4 =  document.form.Direction_4;
   var Grade4 = document.form.Grade_4;
   if (Direction4.value == ""){}else{
-  Final_Condition4+=" "+ Grade4.value + Direction4.value;
-  var link4 = " resulting in ";  }
+  Final_Condition4+= Grade4.value + Direction4.value;
+  var link4 = "";
+  }
   
   
   var Result4_1 =""; 
   if (document.form.Sac_4.checked){
-  var Result4_1 = document.form.Sac_4.value;
+  var Result4_1 = document.form.Sac_4.value + " ";
+  var link4 = " resulting in ";
   }
-  var Result4_2 = document.form.Neural_foramina_4.value;
+  var Result4_2 = "";
+  if (document.form.Neural_foramina_4.value){  
+  var Result4_2 = document.form.Neural_foramina_4.value + " ";
+  var link4 = " resulting in ";
+  }
+  
+  var Result4_3 = "";
+  if (document.form.Nerve_root_4.value){
   var Result4_3 = document.form.Nerve_root_4.value;
+  var link4 = " resulting in ";
+  }
+    
+  var Final_Result4 = Result4_1 + Result4_2 + Result4_3;
+  
+  
   
   <!-- L5-S1 -->
   var link5 = "Unremarkable.";
@@ -328,36 +397,60 @@ function activeFunction() {
   var i;
   for (i = 0; i < Condition5_1.length; i++){
   if (Condition5_1[i].checked){
-  Final_Condition5+=" "+Condition5_1[i].value;
-  var link5 = " resulting in ";  }
+  Final_Condition5+= Condition5_1[i].value+" ";
+  var link5 = "";}
   }
   
   var Direction5 =  document.form.Direction_5;
   var Grade5 = document.form.Grade_5;
   if (Direction5.value == ""){}else{
-  Final_Condition5+=" "+ Grade5.value + Direction5.value;
-  var link5 = " resulting in ";  }
+  Final_Condition5+= Grade5.value + Direction5.value;
+  var link5 = "";
+  }
   
   
   var Result5_1 =""; 
   if (document.form.Sac_5.checked){
-  var Result5_1 = document.form.Sac_5.value;
+  var Result5_1 = document.form.Sac_5.value + " ";
+  var link5 = " resulting in ";
   }
-  var Result5_2 = document.form.Neural_foramina_5.value;
+  var Result5_2 = "";
+  if (document.form.Neural_foramina_5.value){  
+  var Result5_2 = document.form.Neural_foramina_5.value + " ";
+  var link5 = " resulting in ";
+  }
+  
+  var Result5_3 = "";
+  if (document.form.Nerve_root_5.value){
   var Result5_3 = document.form.Nerve_root_5.value;
+  var link5 = " resulting in ";
+  }
+    
+  var Final_Result5 = Result5_1 + Result5_2 + Result5_3;
   
   
   <!-- Others -->
-  
+  var Additional = "";
+  if (document.form.Scoliosis.checked){
+  Additional += "\n" + document.form.Scoliosis.value;
+  }
+ if (document.form.Endplate.checked){
+  Additional += "\n" + document.form.Endplate.value;
+  }
+    
   var Others = document.getElementsByName('Others')[0].value;
-      
+  if (Others == ""){
+  var Others = "Nil"
+  }  
+
+  
  <!-- Old --> document.getElementById('Abnormal_1').innerHTML = "Level L1-L2: " + Final_Condition1 + link1 + Result1_1 + Result1_2 + Result1_3 + ".</br>";
  <!-- Old --> document.getElementById('Abnormal_2').innerHTML = "Level L2-L3: " + Final_Condition2 + link2 + Result2_1 + Result2_2 + Result2_3 + ".</br>";
  <!-- Old --> document.getElementById('Abnormal_3').innerHTML = "Level L3-L4: " + Final_Condition3 + link3 + Result3_1 + Result3_2 + Result3_3 + ".</br>";
  <!-- Old --> document.getElementById('Abnormal_4').innerHTML = "Level L4-L5: " + Final_Condition4 + link4 + Result4_1 + Result4_2 + Result4_3 + ".</br>";
  <!-- Old --> document.getElementById('Abnormal_5').innerHTML = "Level L5-S1: " + Final_Condition5 + link5 + Result5_1 + Result5_2 + Result5_3 + ".</br>";
 		
-  document.getElementById('Final_Report').innerHTML = "MRI of the lumbar spine shows the following findings:\nLevel L1-L2: " + Final_Condition1 + link1 + Result1_1 + Result1_2 + Result1_3 + "\n" + "Level L2-L3: " + Final_Condition2 + link2 + Result2_1 + Result2_2 + Result2_3 + "\n" + "Level L3-L4: " + Final_Condition3 + link3 + Result3_1 + Result3_2 + Result3_3 + "\n" + "Level L4-L5: " + Final_Condition4 + link4 + Result4_1 + Result4_2 + Result4_3 + "\n" + "Level L5-S1: " + Final_Condition5 + link5 + Result5_1 + Result5_2 + Result5_3 + "\n\nOther findings:\n" + Others;  
+  document.getElementById('Final_Report').innerHTML = "MRI of the lumbar spine shows the following findings:\n\nLevel L1-L2: " + Final_Condition1 + link1 + Final_Result1 + "\n" + "Level L2-L3: " + Final_Condition2 + link2 + Final_Result2 + "\n" + "Level L3-L4: " + Final_Condition3 + link3 + Final_Result3 + "\n" + "Level L4-L5: " + Final_Condition4 + link4 + Final_Result4 + "\n" + "Level L5-S1: " + Final_Condition5 + link5 + Final_Result5 + "\n" + Additional + "\n\nOther findings:\n" + Others;  
 
 
      <!-- Others --> document.getElementById('Others').innerHTML = "Other findings:</br>" + Others;  
