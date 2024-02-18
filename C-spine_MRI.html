@@ -34,10 +34,13 @@ Neural foraminal narrowing:
 <input name="Neural_foramina_2" type="radio" value="Bilateral neural foraminal narrowing," />Bilateral,
 <input name="Neural_foramina_2" type="radio" value="Left neural foraminal narrowing," />Left,
 <input name="Neural_foramina_2" type="radio" value="Right neural foraminal narrowing," />Right,&ensp; &ensp; //&ensp; &ensp; 
+
 Myelopathy:
 <input name="Myelopathy_2" type="radio" value="" checked/>None,
 <input name="Myelopathy_2" type="radio" value="Equivocal myelopathy.">Equivocal myelopathy,
 <input name="Myelopathy_2" type="radio" value="Myelopathy.">Myelopathy,
+
+<br><input name="Cord_2" type="checkbox" value="Spinal cord compression," />Spinal cord compression,</br>
 
 <!-- C3-4 -->
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
@@ -71,6 +74,7 @@ Myelopathy:
 <input name="Myelopathy_3" type="radio" value="Equivocal myelopathy.">Equivocal myelopathy,
 <input name="Myelopathy_3" type="radio" value="Myelopathy.">Myelopathy,
 
+<br><input name="Cord_3" type="checkbox" value="Spinal cord compression," />Spinal cord compression,</br>
 
 <!-- C4-5 -->
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
@@ -104,6 +108,7 @@ Myelopathy:
 <input name="Myelopathy_4" type="radio" value="Equivocal myelopathy.">Equivocal myelopathy,
 <input name="Myelopathy_4" type="radio" value="Myelopathy.">Myelopathy,
 
+<br><input name="Cord_4" type="checkbox" value="Spinal cord compression," />Spinal cord compression,</br>
 
 <!-- C5-6 -->
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
@@ -137,6 +142,7 @@ Myelopathy:
 <input name="Myelopathy_5" type="radio" value="Equivocal myelopathy.">Equivocal myelopathy,
 <input name="Myelopathy_5" type="radio" value="Myelopathy.">Myelopathy,
 
+<br><input name="Cord_5" type="checkbox" value="Spinal cord compression," />Spinal cord compression,</br>
 
 <!-- C6-C7 -->
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
@@ -169,6 +175,9 @@ Myelopathy:
 <input name="Myelopathy_6" type="radio" value="" checked/>None,
 <input name="Myelopathy_6" type="radio" value="Equivocal myelopathy.">Equivocal myelopathy,
 <input name="Myelopathy_6" type="radio" value="Myelopathy.">Myelopathy,
+
+<br><input name="Cord_6" type="checkbox" value="Spinal cord compression," />Spinal cord compression,</br>
+
 </p>
 
 
@@ -177,9 +186,9 @@ Myelopathy:
 <p>Additional findings:</p>
 <input name="Scoliosis" type="checkbox" value="- Scoliosis." />Scoliosis,&nbsp;&nbsp;&nbsp;
 <input name="Endplate" type="checkbox" value="- Degenerative endplate change." />Degenerative endplate change,&nbsp;&nbsp;&nbsp;
-<input name="Thyroid" type="checkbox" value="- Thyroid lesions." />Thyroid lesions,
+<input name="Thyroid" type="checkbox" value="- Thyroid lesions." />Thyroid lesions,&nbsp;&nbsp;&nbsp;
 
-
+<input name="Lordotic" type="checkbox" value="- Loss of lordotic shape of the cervical spine." />Loss of lordotic shape,
 
 <!-- Others -->
 <p>Other findings:<br><textarea rows="10" cols="150" name="Others" value=""></textarea></br><p>
@@ -247,13 +256,18 @@ function activeFunction() {
   var link2 = "resulting in ";
   }
   var Result2_3 = "";
+  if (document.form.Cord_2.checked){  
+  var Result2_3 = document.form.Cord_2.value + " ";
+  var link2 = "resulting in ";
+  }
+  var Result2_4 = "";
   if (document.form.Myelopathy_2.value){  
-  var Result2_3 = document.form.Myelopathy_2.value;
+  var Result2_4 = document.form.Myelopathy_2.value;
   var link2 = "resulting in ";
   }
     
   
-  var Final_Result2 = Result2_1 + Result2_2 + Result2_3;
+  var Final_Result2 = Result2_1 + Result2_2 + Result2_3 + Result2_4;
   
 <!-- C3-4 -->
   var link3 = "Unremarkable.";
@@ -285,12 +299,17 @@ function activeFunction() {
   var link3 = "resulting in ";
   }
   var Result3_3 = "";
+  if (document.form.Cord_3.checked){  
+  var Result3_3 = document.form.Cord_3.value + " ";
+  var link3 = "resulting in ";
+  }
+  var Result3_4 = "";
   if (document.form.Myelopathy_3.value){  
-  var Result3_3 = document.form.Myelopathy_3.value;
+  var Result3_4 = document.form.Myelopathy_3.value;
   var link3 = "resulting in ";
   }
   
-  var Final_Result3 = Result3_1 + Result3_2 + Result3_3;
+  var Final_Result3 = Result3_1 + Result3_2 + Result3_3 + Result3_4;
   
   
 <!-- C4-5 -->
@@ -323,12 +342,17 @@ function activeFunction() {
   var link4 = "resulting in ";
   }
   var Result4_3 = "";
+  if (document.form.Cord_4.checked){  
+  var Result4_3 = document.form.Cord_4.value + " ";
+  var link4 = "resulting in ";
+  }
+  var Result4_4 = "";
   if (document.form.Myelopathy_4.value){  
-  var Result4_3 = document.form.Myelopathy_4.value;
+  var Result4_4 = document.form.Myelopathy_4.value;
   var link4 = "resulting in ";
   }
   
-  var Final_Result4 = Result4_1 + Result4_2 + Result4_3;
+  var Final_Result4 = Result4_1 + Result4_2 + Result4_3 + Result4_4;
 
 
 
@@ -362,12 +386,17 @@ function activeFunction() {
   var link5 = "resulting in ";
   }
   var Result5_3 = "";
+  if (document.form.Cord_5.checked){  
+  var Result5_3 = document.form.Cord_5.value + " ";
+  var link5 = "resulting in ";
+  }
+  var Result5_4 = "";
   if (document.form.Myelopathy_5.value){  
-  var Result5_3 = document.form.Myelopathy_5.value;
+  var Result5_4 = document.form.Myelopathy_5.value;
   var link5 = "resulting in ";
   }
   
-  var Final_Result5 = Result5_1 + Result5_2 + Result5_3;
+  var Final_Result5 = Result5_1 + Result5_2 + Result5_3 + Result5_4;
   
   
   
@@ -401,12 +430,17 @@ function activeFunction() {
   var link6 = "resulting in ";
   }
   var Result6_3 = "";
+  if (document.form.Cord_6.checked){  
+  var Result6_3 = document.form.Cord_6.value + " ";
+  var link6 = "resulting in ";
+  }
+  var Result6_4 = "";
   if (document.form.Myelopathy_6.value){  
-  var Result6_3 = document.form.Myelopathy_6.value;
+  var Result6_4 = document.form.Myelopathy_6.value;
   var link6 = "resulting in ";
   }
   
-  var Final_Result6 = Result6_1 + Result6_2 + Result6_3;
+  var Final_Result6 = Result6_1 + Result6_2 + Result6_3 + Result6_4;
   
   
   <!-- Others -->
@@ -414,13 +448,15 @@ function activeFunction() {
   if (document.form.Scoliosis.checked){
   Additional += "\n" + document.form.Scoliosis.value;
   }
- if (document.form.Endplate.checked){
+  if (document.form.Endplate.checked){
   Additional += "\n" + document.form.Endplate.value;
   }
-   if (document.form.Thyroid.checked){
+  if (document.form.Thyroid.checked){
   Additional += "\n" + document.form.Thyroid.value;
   }
-  
+  if (document.form.Lordotic.checked){
+  Additional += "\n" + document.form.Lordotic.value;
+  }
     
   var Others = document.getElementsByName('Others')[0].value;
   if (Others == ""){
