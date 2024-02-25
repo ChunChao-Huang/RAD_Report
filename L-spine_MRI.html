@@ -196,8 +196,9 @@ Neural foraminal narrowing:
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 <p>Additional findings:</p>
 <input name="Scoliosis" type="checkbox" value="- Scoliosis." />Scoliosis,&nbsp;&nbsp;&nbsp;
-<input name="Endplate" type="checkbox" value="- Degenerative endplate change." />Degenerative endplate change,
-
+<input name="Endplate" type="checkbox" value="- Degenerative endplate change." />Degenerative endplate change,&nbsp;&nbsp;&nbsp;
+<input name="Filum" type="checkbox" value="- Fatty filum terminale." />Fatty filum terminale,&nbsp;&nbsp;&nbsp;
+<input name="Tarlov" type="checkbox" value="- Tarlov cysts." />Tarlov cysts,
 
 <!-- Others -->
 <p>Other findings:<br><textarea rows="10" cols="150" name="Others" value=""></textarea></br><p>
@@ -459,9 +460,16 @@ function activeFunction() {
   if (document.form.Scoliosis.checked){
   Additional += "\n" + document.form.Scoliosis.value;
   }
- if (document.form.Endplate.checked){
+  if (document.form.Endplate.checked){
   Additional += "\n" + document.form.Endplate.value;
   }
+  if (document.form.Filum.checked){
+  Additional += "\n" + document.form.Filum.value;
+  }
+  if (document.form.Tarlov.checked){
+  Additional += "\n" + document.form.Tarlov.value;
+  }
+      
     
   var Others = document.getElementsByName('Others')[0].value;
   if (Others == ""){
