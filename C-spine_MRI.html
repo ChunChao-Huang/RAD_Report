@@ -5,7 +5,7 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Cervial spine MRI Reporting Platform</u></b></font></p>
+		<p><font size=6><b><u>Cervial spine MRI Reporting Platform(Updated:2024/06/01)</u></b></font></p>
 <form name="form">
 		
 <!-- C2-3 -->
@@ -180,6 +180,41 @@ Myelopathy:
 
 </p>
 
+<!-- C7-T1 -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p>Level C7-T1:</p>
+<p>
+<input name="Condition_7" type="checkbox" value="Disc bulging," />Disc bulging,
+<input name="Condition_7" type="checkbox" value="Spur formation," />Spur formation,
+<input name="Condition_7" type="checkbox" value="Facet joint arthropathy," />Facet joint arthropathy,
+</p>
+
+<p>Spondylolisthesis:
+<input name="Direction_7" type="radio" value="" checked/>None,
+<input name="Direction_7" type="radio" value="Anterolisthesis," />Anterolisthesis,
+<input name="Direction_7" type="radio" value="Retrolisthesis," />Retrolisthesis,   Grade:
+<input name="Grade_7" type="radio" value="" checked/>None,
+<input name="Grade_7" type="radio" value="Grade I " />1,
+<input name="Grade_7" type="radio" value="Grade II " />2,
+<input name="Grade_7" type="radio" value="Grade III " />3,
+<input name="Grade_7" type="radio" value="Grade IV " />4,
+</p>
+
+<p>Effect<br>
+<input name="Sac_7" type="checkbox" value="Compression on the thecal sac," />Compression on the thecal sac,&ensp; &ensp; //&ensp; &ensp;  
+Neural foraminal narrowing:
+<input name="Neural_foramina_7" type="radio" value="" checked/>None,
+<input name="Neural_foramina_7" type="radio" value="Bilateral neural foraminal narrowing," />Bilateral,
+<input name="Neural_foramina_7" type="radio" value="Left neural foraminal narrowing," />Left,
+<input name="Neural_foramina_7" type="radio" value="Right neural foraminal narrowing," />Right,&ensp; &ensp; //&ensp; &ensp; 
+Myelopathy:
+<input name="Myelopathy_7" type="radio" value="" checked/>None,
+<input name="Myelopathy_7" type="radio" value="Equivocal myelopathy.">Equivocal myelopathy,
+<input name="Myelopathy_7" type="radio" value="Myelopathy.">Myelopathy,
+
+<br><input name="Cord_7" type="checkbox" value="Spinal cord compression," />Spinal cord compression,</br>
+
+</p>
 
 <!-- Additional findings -->
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
@@ -443,6 +478,49 @@ function activeFunction() {
   var Final_Result6 = Result6_1 + Result6_2 + Result6_3 + Result6_4;
   
   
+    <!-- C7-T1 -->
+  var link7 = "Unremarkable.";
+  var Condition7_1 = document.form.Condition_7;
+  var Final_Condition7 = "";
+  var i;
+  for (i = 0; i < Condition7_1.length; i++){
+  if (Condition7_1[i].checked){
+  Final_Condition7+= Condition7_1[i].value+" ";
+  var link7 = "";}
+  }
+  
+  var Direction7 =  document.form.Direction_7;
+  var Grade7 = document.form.Grade_7;
+  if (Direction7.value == ""){}else{
+  Final_Condition7+= Grade7.value + Direction7.value + " ";
+  var link7 = "";
+  }
+  
+  
+  var Result7_1 ="";
+  if (document.form.Sac_7.checked){
+  var Result7_1 = document.form.Sac_7.value + " ";
+  var link7 = "resulting in ";
+  }
+  var Result7_2 = "";
+  if (document.form.Neural_foramina_7.value){  
+  var Result7_2 = document.form.Neural_foramina_7.value + " ";
+  var link7 = "resulting in ";
+  }
+  var Result7_3 = "";
+  if (document.form.Cord_7.checked){  
+  var Result7_3 = document.form.Cord_7.value + " ";
+  var link7 = "resulting in ";
+  }
+  var Result7_4 = "";
+  if (document.form.Myelopathy_7.value){  
+  var Result7_4 = document.form.Myelopathy_7.value;
+  var link7 = "resulting in ";
+  }
+  
+  var Final_Result7 = Result7_1 + Result7_2 + Result7_3 + Result7_4;
+  
+  
   <!-- Others -->
   var Additional = "";
   if (document.form.Scoliosis.checked){
@@ -464,7 +542,7 @@ function activeFunction() {
   }  
 
 		
-  document.getElementById('Final_Report').innerHTML = "MRI of the cervical spine shows the following findings:\n\nLevel C2-C3: " + Final_Condition2 + link2 + Final_Result2 + "\n" + "Level C3-C4: " + Final_Condition3 + link3 + Final_Result3 + "\n" + "Level C4-C5: " + Final_Condition4 + link4 + Final_Result4 + "\n" + "Level C5-C6: " + Final_Condition5 + link5 + Final_Result5 + "\n" + "Level C6-C7: " + Final_Condition6 + link6 + Final_Result6 + "\n" + Additional + "\n\nOther findings:\n" + Others;  
+  document.getElementById('Final_Report').innerHTML = "MRI of the cervical spine shows the following findings:\n\nLevel C2-C3: " + Final_Condition2 + link2 + Final_Result2 + "\n" + "Level C3-C4: " + Final_Condition3 + link3 + Final_Result3 + "\n" + "Level C4-C5: " + Final_Condition4 + link4 + Final_Result4 + "\n" + "Level C5-C6: " + Final_Condition5 + link5 + Final_Result5 + "\n" + "Level C6-C7: " + Final_Condition6 + link6 + Final_Result6 + "\n" + "Level C7-T1: " + Final_Condition7 + link7 + Final_Result7 + "\n" + Additional + "\n\nOther findings:\n" + Others;  
 
 }
   </script>
