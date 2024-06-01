@@ -57,7 +57,8 @@
 <input name="R_IV" type="checkbox" value="Right IV">IV,
 <input name="R_VA" type="checkbox" value="Right VA">VA,
 <input name="R_VB" type="checkbox" value="Right VA">VB,
-<input name="R_VI" type="checkbox" value="Right VI">VI,
+<input name="R_VI_Upper" type="checkbox" value="Right VI Upper">VI(above inferior margin of cricoid),
+<input name="R_VI_Lower" type="checkbox" value="Right VI Lower">VI(below inferior margin of cricoid),
 <input name="R_VII" type="checkbox" value="Right VII">VII,
 <p>Left Neck Level</p>
 <p><input name="L_Retropharyngeal" type="checkbox" value="Left Retropharyngeal">Retropharyngeal,
@@ -69,7 +70,8 @@
 <input name="L_IV" type="checkbox" value="Left IV">IV,
 <input name="L_VA" type="checkbox" value="Left VA">VA,
 <input name="L_VB" type="checkbox" value="Left VA">VB,
-<input name="L_VI" type="checkbox" value="Left VI">VI,
+<input name="L_VI_Upper" type="checkbox" value="Left VI Upper">VI(above inferior margin of cricoid),
+<input name="L_VI_Lower" type="checkbox" value="Left VI Lower">VI(below inferior margin of cricoid),
 <input name="L_VII" type="checkbox" value="Left VII">VII,</p>
 <p>Maximum size of the largest positive node(long axis):<input name="N_Size" type="text" size="2">cm</p>
 
@@ -200,7 +202,8 @@ function activeFunction() {
   R_IV = "□"; 
   R_VA = "□";
   R_VB = "□";
-  R_VI = "□";
+  R_VI_Upper = "□";
+  R_VI_Lower = "□";
   R_VII = "□";
   L_Retropharyngeal = "□";
   L_IA = "□";
@@ -211,7 +214,8 @@ function activeFunction() {
   L_IV = "□"; 
   L_VA = "□";
   L_VB = "□";
-  L_VI = "□";
+  L_VI_Upper = "□";
+  L_VI_Lower = "□";
   L_VII = "□";
   R_Node = 0;
   L_Node = 0;
@@ -226,7 +230,8 @@ function activeFunction() {
   if (document.form.R_IV.checked) {R_IV = "■";  R_Node = 1; Stage_N = "N1"}
   if (document.form.R_VA.checked) {R_VA = "■";  R_Node = 1; Stage_N = "N1"}
   if (document.form.R_VB.checked) {R_VB = "■";  R_Node = 1; Stage_N = "N1"}
-  if (document.form.R_VI.checked) {R_VI = "■";  R_Node = 1; Stage_N = "N1"}
+  if (document.form.R_VI_Upper.checked) {R_VI_Upper = "■";  R_Node = 1; Stage_N = "N1"}
+  if (document.form.R_VI_Lower.checked) {R_VI_Lower = "■";  R_Node = 1; Stage_N = "N1"}
   if (document.form.R_VII.checked) {R_VII = "■";  R_Node = 1; Stage_N = "N1"}
   if (document.form.L_Retropharyngeal.checked) {L_Retropharyngeal = "■"; L_Node = 0; Stage_N = "N1"}
   if (document.form.L_IA.checked) {L_IA = "■"; L_Node = 1; Stage_N = "N1"}
@@ -237,14 +242,15 @@ function activeFunction() {
   if (document.form.L_IV.checked) {L_IV = "■"; L_Node = 1; Stage_N = "N1"}
   if (document.form.L_VA.checked) {L_VA = "■"; L_Node = 1; Stage_N = "N1"}
   if (document.form.L_VB.checked) {L_VB = "■"; L_Node = 1; Stage_N = "N1"}
-  if (document.form.L_VI.checked) {L_VI = "■"; L_Node = 1; Stage_N = "N1"}
+  if (document.form.L_VI_Upper.checked) {L_VI_Upper = "■"; L_Node = 1; Stage_N = "N1"}
+  if (document.form.L_VI_Lower.checked) {L_VI_Lower = "■"; L_Node = 1; Stage_N = "N1"}
   if (document.form.L_VII.checked) {L_VII = "■"; L_Node = 1; Stage_N = "N1"}
 
   if (R_Node == 1 && L_Node == 1) {Stage_N = "N2";}
   if (document.form.R_Retropharyngeal.checked && L_Node == 1)  {Stage_N = "N2";}
   if (document.form.L_Retropharyngeal.checked && R_Node == 1)  {Stage_N = "N2";}
   
-  if (document.form.R_IV.checked || document.form.R_VB.checked || document.form.L_IV.checked || document.form.L_VB.checked || document.form.R_VII.checked || document.form.L_VII.checked) {Stage_N = "N3";}
+  if (document.form.R_IV.checked || document.form.R_VB.checked || document.form.L_IV.checked || document.form.L_VB.checked || document.form.R_VII.checked || document.form.L_VII.checked || document.form.R_VI_Lower.checked || document.form.L_VI_Lower.checked) {Stage_N = "N3";}
   if (document.form.N_Size.value > 6) {Stage_N = "N3";}
 
 
@@ -259,7 +265,7 @@ function activeFunction() {
   if (document.form.Others.checked) {Others = "■"; Stage_M = "M1"; No_Metastasis = "□"; Yes_Metastasis = "■";}
 
 
- document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Nasopharyngeal Carcinoma AJCC 8th #\n\n1.Imaging Madality: " + CT + "CT Scan  or  " + MRI + "MRI Scan\n\n2.Tumor Location and Size\n" + Nonmeasurable + "Non-measurable\n" + Measurable + "Measurable: " + T_Left + "Left  " + T_Right + "Right  " + T_Bilateral + "Bilateral\nSize(largest diameter): " + document.form.T_Size.value + "cm\n\n3.Tumor invasion\n"+ No_Invasion + "No or Equivocal\n" + Yes_Invasion + "Yes, As the following:\n" + Nasopharynx + "Nasopharynx  " + Oropharynx + "Oropharynx  " + Nasal_cavity + "Nasal cavity\n" + Parapharyngeal_space + "Parapharyngeal space  " + Medial_pterygoid + "Medial pterygoid muscle  " + Lateral_pterygoid + "Lateral pterygoid muscle  " + Preverebral_muscles + "Preverebral muscles\n" + Skull_base + "Skull base bone invasion  " + Cervical_vertebra + "Cervical vertebra  " + Pterygoid_bone + "Pterygoid bone  " + Paranasal_sinuses + "Paranasal sinuses\n" + Intracranial_extension + "Intracranial extension  " + Cranial_nerves + "Cranial nerves  " + Hypopharynx + "Hypopharynx  " + Orbit + "Orbit\n" + Parotid_gland + "Parotid gland  " + Beyond_pterygoid + "Infiltration beyond the lateral surface of the lateral pterygoid muscle\n\n4. Neck Lymph Node\nImage_based posivite lymph node\nRight neck level:\n" + R_Retropharyngeal + "Retropharyngeal  " + R_IA + "IA  " + R_IB + "IB  " + R_IIA + "IIA  " + R_IIB + "IIB  " + R_III + "III  " + R_IV + "IV  " + R_VA + "VA  " + R_VB + "VB  " + R_VI + "VI  " + R_VII + "VII\nLeft neck level:\n" + L_Retropharyngeal + "Retropharyngeal  " + L_IA + "IA  " + L_IB + "IB  " + L_IIA + "IIA  " + L_IIB + "IIB  " + L_III + "III  " + L_IV + "IV  " + L_VA + "VA  " + L_VB + "VB  " + L_VI + "VI  " + L_VII + "VII\nMaximal size of the largest positive node(long axis):" + document.form.N_Size.value + "cm\n\n5. Distant metastasis (In this study)\n" + No_Metastasis + "No or Equivocal\n" + Yes_Metastasis + "Yes, as the following: " + Lung + "Lung  " + Bone + "Bone  " + Others + "Others: " + document.form.Metastasis.value + "\n\nFinal TNM staging: " + Stage_T + Stage_N + Stage_M;
+ document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Nasopharyngeal Carcinoma AJCC 8th #\n\n1.Imaging Madality: " + CT + "CT Scan  or  " + MRI + "MRI Scan\n\n2.Tumor Location and Size\n" + Nonmeasurable + "Non-measurable\n" + Measurable + "Measurable: " + T_Left + "Left  " + T_Right + "Right  " + T_Bilateral + "Bilateral\nSize(largest diameter): " + document.form.T_Size.value + "cm\n\n3.Tumor invasion\n"+ No_Invasion + "No or Equivocal\n" + Yes_Invasion + "Yes, As the following:\n" + Nasopharynx + "Nasopharynx  " + Oropharynx + "Oropharynx  " + Nasal_cavity + "Nasal cavity\n" + Parapharyngeal_space + "Parapharyngeal space  " + Medial_pterygoid + "Medial pterygoid muscle  " + Lateral_pterygoid + "Lateral pterygoid muscle  " + Preverebral_muscles + "Preverebral muscles\n" + Skull_base + "Skull base bone invasion  " + Cervical_vertebra + "Cervical vertebra  " + Pterygoid_bone + "Pterygoid bone  " + Paranasal_sinuses + "Paranasal sinuses\n" + Intracranial_extension + "Intracranial extension  " + Cranial_nerves + "Cranial nerves  " + Hypopharynx + "Hypopharynx  " + Orbit + "Orbit\n" + Parotid_gland + "Parotid gland  " + Beyond_pterygoid + "Infiltration beyond the lateral surface of the lateral pterygoid muscle\n\n4. Neck Lymph Node\nImage_based posivite lymph node\nRight neck level:\n" + R_Retropharyngeal + "Retropharyngeal  " + R_IA + "IA  " + R_IB + "IB  " + R_IIA + "IIA  " + R_IIB + "IIB  " + R_III + "III  " + R_IV + "IV  " + R_VA + "VA  " + R_VB + "VB  " + R_VI_Upper + "VI(above inferior margin of cricoid)  " + R_VI_Lower + "VI(below inferior margin of cricoid)  " + R_VII + "VII\nLeft neck level:\n" + L_Retropharyngeal + "Retropharyngeal  " + L_IA + "IA  " + L_IB + "IB  " + L_IIA + "IIA  " + L_IIB + "IIB  " + L_III + "III  " + L_IV + "IV  " + L_VA + "VA  " + L_VB + "VB  " + L_VI_Upper + "VI(above inferior margin of cricoid)  " + L_VI_Lower + "VI(below inferior margin of cricoid)  " + L_VII + "VII\nMaximal size of the largest positive node(long axis):" + document.form.N_Size.value + "cm\n\n5. Distant metastasis (In this study)\n" + No_Metastasis + "No or Equivocal\n" + Yes_Metastasis + "Yes, as the following: " + Lung + "Lung  " + Bone + "Bone  " + Others + "Others: " + document.form.Metastasis.value + "\n\nFinal TNM staging: " + Stage_T + Stage_N + Stage_M;
 }    
  
   </script>
