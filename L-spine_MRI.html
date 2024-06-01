@@ -237,6 +237,7 @@ Neural foraminal narrowing:
 <input name="Endplate" type="checkbox" value="- Degenerative endplate change." />Degenerative endplate change,&nbsp;&nbsp;&nbsp;
 <input name="Filum" type="checkbox" value="- Fatty filum terminale." />Fatty filum terminale,&nbsp;&nbsp;&nbsp;
 <input name="Schmorl" type="checkbox" value="- Schmorl nodes." />Schmorl nodes,&nbsp;&nbsp;&nbsp;
+<input name="Transitional" type="checkbox" value="- Transitional vertebra." />Transitional vertebra,&nbsp;&nbsp;&nbsp;
 <input name="Tarlov" type="checkbox" value="- Tarlov cysts." />Tarlov cysts,
 
 <!-- Others -->
@@ -550,6 +551,9 @@ function activeFunction() {
   }
   if (document.form.Schmorl.checked){
   Additional += "\n" + document.form.Schmorl.value;
+  }
+  if (document.form.Transitional.checked){
+  Additional += "\n" + document.form.Transitional.value;
   }
   if (document.form.Tarlov.checked){
   Additional += "\n" + document.form.Tarlov.value;
