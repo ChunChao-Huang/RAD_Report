@@ -5,10 +5,48 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Lumbar spine MRI Reporting Platform</u></b></font></p>
+		<p><font size=6><b><u>Lumbar spine MRI Reporting Platform (Updated:2024/06/01)</u></b></font></p>
 <form name="form">
+
+
+<!-- T12-L1 -->
+<p>Level T12-L1:</p>
+<p>
+<input name="Condition_0" type="checkbox" value="Disc bulging," />Disc bulging,
+<input name="Condition_0" type="checkbox" value="Spur formation," />Spur formation,
+<input name="Condition_0" type="checkbox" value="Facet joint arthropathy," />Facet joint arthropathy,
+<input name="Condition_0" type="checkbox" value="Hypertrophic ligmentum flavum," />Hypertrophic ligmentum flavum,
+</p>
+
+<p>Spondylolisthesis:
+<input name="Direction_0" type="radio" value="" checked/>None,
+<input name="Direction_0" type="radio" value="Anterolisthesis," />Anterolisthesis,
+<input name="Direction_0" type="radio" value="Retrolisthesis," />Retrolisthesis,&ensp;&ensp;
+<input name="Spondylolysis_0" type="checkbox" value="Spondylolytic " />Spondylolysis,&ensp;&ensp;Grade:
+<input name="Grade_0" type="radio" value="" checked/>None,
+<input name="Grade_0" type="radio" value="Grade I " />1,
+<input name="Grade_0" type="radio" value="Grade II " />2,
+<input name="Grade_0" type="radio" value="Grade III " />3,
+<input name="Grade_0" type="radio" value="Grade IV " />4,
+</p>
+
+<p>Effect<br>
+<input name="Sac_0" type="checkbox" value="Compression on the thecal sac," />Compression on the thecal sac,&ensp; &ensp; //&ensp; &ensp;  
+Neural foraminal narrowing:
+<input name="Neural_foramina_0" type="radio" value="" checked/>None,
+<input name="Neural_foramina_0" type="radio" value="Bilateral neural foraminal narrowing," />Bilateral,
+<input name="Neural_foramina_0" type="radio" value="Left neural foraminal narrowing," />Left,
+<input name="Neural_foramina_0" type="radio" value="Right neural foraminal narrowing," />Right,
+
+&ensp; &ensp; //&ensp; &ensp; Nerve root indentation:
+<input name="Nerve_root_0" type="radio" value="" checked/>None,
+<input name="Nerve_root_0" type="radio" value="Bilateral nerve root indentation." />Bilateral,
+<input name="Nerve_root_0" type="radio" value="Left nerve root indentation." />Left,
+<input name="Nerve_root_0" type="radio" value="Right nerve root indentation." />Right,</p>
+
 		
 <!-- L1-2 -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 <p>Level L1-L2:</p>
 <p>
 <input name="Condition_1" type="checkbox" value="Disc bulging," />Disc bulging,
@@ -198,6 +236,7 @@ Neural foraminal narrowing:
 <input name="Scoliosis" type="checkbox" value="- Scoliosis." />Scoliosis,&nbsp;&nbsp;&nbsp;
 <input name="Endplate" type="checkbox" value="- Degenerative endplate change." />Degenerative endplate change,&nbsp;&nbsp;&nbsp;
 <input name="Filum" type="checkbox" value="- Fatty filum terminale." />Fatty filum terminale,&nbsp;&nbsp;&nbsp;
+<input name="Schmorl" type="checkbox" value="- Schmorl nodes." />Schmorl nodes,&nbsp;&nbsp;&nbsp;
 <input name="Tarlov" type="checkbox" value="- Tarlov cysts." />Tarlov cysts,
 
 <!-- Others -->
@@ -239,6 +278,49 @@ window.location.reload();
 }   
   
 function activeFunction() {
+<!-- T12-L1 -->
+  var link0 = "Unremarkable.";
+  var Condition0_1 = document.form.Condition_0;
+  var Final_Condition0 = "";
+  var i;
+  for (i = 0; i < Condition0_1.length; i++){
+  if (Condition0_1[i].checked){
+  Final_Condition0+= Condition0_1[i].value+" ";
+  var link0 = "";}
+  }
+  
+  var Direction0 =  document.form.Direction_0;
+  var Grade0 = document.form.Grade_0;
+  var Spondylolysis0 = "";
+  if (Direction0.value == ""){}else{
+  if (document.form.Spondylolysis_0.checked){
+  Spondylolysis0 = document.form.Spondylolysis_0.value;
+  }
+  Final_Condition0+= Grade0.value + Spondylolysis0 + Direction0.value + " ";
+  var link0 = "";
+  }
+  
+  
+  var Result0_1 =""; 
+  if (document.form.Sac_0.checked){
+  var Result0_1 = document.form.Sac_0.value + " ";
+  var link0 = "resulting in ";
+  }
+  var Result0_2 = "";
+  if (document.form.Neural_foramina_0.value){  
+  var Result0_2 = document.form.Neural_foramina_0.value + " ";
+  var link0 = "resulting in ";
+  }
+  
+  var Result0_3 = "";
+  if (document.form.Nerve_root_0.value){
+  var Result0_3 = document.form.Nerve_root_0.value;
+  var link0 = "resulting in ";
+  }
+    
+  var Final_Result0 = Result0_1 + Result0_2 + Result0_3;
+
+
 <!-- L1-2 -->
   var link1 = "Unremarkable.";
   var Condition1_1 = document.form.Condition_1;
@@ -466,6 +548,9 @@ function activeFunction() {
   if (document.form.Filum.checked){
   Additional += "\n" + document.form.Filum.value;
   }
+  if (document.form.Schmorl.checked){
+  Additional += "\n" + document.form.Schmorl.value;
+  }
   if (document.form.Tarlov.checked){
   Additional += "\n" + document.form.Tarlov.value;
   }
@@ -483,7 +568,7 @@ function activeFunction() {
  <!-- Old --> document.getElementById('Abnormal_4').innerHTML = "Level L4-L5: " + Final_Condition4 + link4 + Result4_1 + Result4_2 + Result4_3 + ".</br>";
  <!-- Old --> document.getElementById('Abnormal_5').innerHTML = "Level L5-S1: " + Final_Condition5 + link5 + Result5_1 + Result5_2 + Result5_3 + ".</br>";
 		
-  document.getElementById('Final_Report').innerHTML = "MRI of the lumbar spine shows the following findings:\n\nLevel L1-L2: " + Final_Condition1 + link1 + Final_Result1 + "\n" + "Level L2-L3: " + Final_Condition2 + link2 + Final_Result2 + "\n" + "Level L3-L4: " + Final_Condition3 + link3 + Final_Result3 + "\n" + "Level L4-L5: " + Final_Condition4 + link4 + Final_Result4 + "\n" + "Level L5-S1: " + Final_Condition5 + link5 + Final_Result5 + "\n" + Additional + "\n\nOther findings:\n" + Others;  
+  document.getElementById('Final_Report').innerHTML = "MRI of the lumbar spine shows the following findings:\n\nLevel T12-L1: " + Final_Condition0 + link0 + Final_Result0 + "\n" + "Level  L1-L2: " + Final_Condition1 + link1 + Final_Result1 + "\n" + "Level  L2-L3: " + Final_Condition2 + link2 + Final_Result2 + "\n" + "Level  L3-L4: " + Final_Condition3 + link3 + Final_Result3 + "\n" + "Level  L4-L5: " + Final_Condition4 + link4 + Final_Result4 + "\n" + "Level  L5-S1: " + Final_Condition5 + link5 + Final_Result5 + "\n" + Additional + "\n\nOther findings:\n" + Others;  
 
 
      <!-- Others --> document.getElementById('Others').innerHTML = "Other findings:</br>" + Others;  
