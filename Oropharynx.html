@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+ 		<title> Oropharyngeal Cancer Staging Form</title>
+ 	 </head>
+	 <body>
+    	
+		<p><font size=6><b><u>Oropharyngeal Cancer Staging Form (Updated:2024/06/02)</u></b></font></p>
+		
+		<p><font size=4>Imaging Report Form for Oropharyngeal Carcinoma AJCC 8th</font></p>
+<form name="form">
+
+<p><b>Scan Modality:</b>
+<input name="Scan" type="radio" value="CT" checked="checked">CT or
+<input name="Scan" type="radio" value="MRI">MRI,&nbsp;&nbsp;&nbsp;&nbsp;
+<input name="Limitation" type="checkbox" value="">The scan range does not fully cover the whole head and neck
+
+<p><b>Tumor Location and Size:</b>
+<input name="T_Measure" type="radio" value="Non_assessable">Non-assessable (Tx),
+<input name="T_Measure" type="radio" value="No">No evidence of primary tumor (T0),
+<input name="T_Measure" type="radio" value="Yes" checked="checked">Measurable, Tumor Size(Maximal diameter):<input name="T_Size" type="text" size="2">cm</p>
+<p>HPV-mediated (p16+)<input name="P16" type="radio" value="0" checked>No or Uncertain, <input name="P16" type="radio" value="1">Yes,</p>
+<p>Tumor location</p>
+<p>Laterality: <input name="Tumor_R" type="checkbox" value="Right">Right, <input name="Tumor_L" type="checkbox" value="Left">Left,</p>
+<p>Tumor location:</p>
+<p><input name="Tongue_Base" type="checkbox">Base of the tongue, <input name="Tonsil" type="checkbox">Tonsillar fossa,</p>
+<p><input name="Soft_Palate" type="checkbox">Soft palate, <input name="Oropharynx" type="checkbox">Oropharyngeal walls,</p>
+
+
+<p><b>Tumor Invasion:</b></p>
+<p><b>T3:</b>
+<input name="Lingual_Epiglottis" type="checkbox">Extension to lingual surface of epiglottis,
+<p><b>T4a:</b>
+<input name="Larynx" type="checkbox">Larynx,
+<input name="Extrinsic" type="checkbox">Extrinsic muscle of tongue,
+<input name="M_Pterygoid" type="checkbox">Medial pterygoid muscle,
+<input name="Hard_Palate" type="checkbox">Hard palate,
+<input name="Mandible" type="checkbox">Mandible,
+<p><b>T4b:</b>
+<input name="L_Pterygoid" type="checkbox">Lateral pterygoid muscle,
+<input name="Pterygoid" type="checkbox">Pterygoid plates,
+<input name="Nasopharynx" type="checkbox">Lateral nasopharynx,
+<input name="Skull" type="checkbox">Skull base,
+<input name="Carotid" type="checkbox">Encasement of carotid artery,
+
+
+
+<p>&nbsp;</p>
+<p><b>Neck Lymph Node</b>
+<p>
+<input name="Node_Number" type="radio" value ="0" checked>No lymphadenopathy,
+<input name="Node_Number" type="radio" value ="1">Only one lymphadenopathy,
+<input name="Node_Number" type="radio" value="2">More than one lymphadenopathy,
+</p>
+
+<p>Right Neck Level</p>
+<p><input name="R_IA" type="checkbox">IA,
+<input name="R_IB" type="checkbox">IB,
+<input name="R_IIA" type="checkbox">IIA,
+<input name="R_IIB" type="checkbox">IIB,
+<input name="R_III" type="checkbox">III,
+<input name="R_IV" type="checkbox">IV,
+<input name="R_VA" type="checkbox">VA,
+<input name="R_VB" type="checkbox">VB,
+<input name="R_VI" type="checkbox">VI,
+<input name="R_VII" type="checkbox">VII,
+<input name="R_Facial" type="checkbox">Facial,
+<input name="R_Retropharyngeal" type="checkbox">Retropharyngeal,
+<input name="R_Parapharyngeal" type="checkbox">Parapharyngeal,
+<input name="R_Parotid" type="checkbox">Parotid,
+<input name="R_Suboccipital" type="checkbox">Suboccipital,
+<input name="R_Retroauricular" type="checkbox">Retroauricular,
+<p>Left Neck Level</p>
+<p><input name="L_IA" type="checkbox">IA,
+<input name="L_IB" type="checkbox">IB,
+<input name="L_IIA" type="checkbox">IIA,
+<input name="L_IIB" type="checkbox">IIB,
+<input name="L_III" type="checkbox">III,
+<input name="L_IV" type="checkbox">IV,
+<input name="L_VA" type="checkbox">VA,
+<input name="L_VB" type="checkbox">VB,
+<input name="L_VI" type="checkbox">VI,
+<input name="L_VII" type="checkbox">VII,
+<input name="L_Facial" type="checkbox">Facial,
+<input name="L_Retropharyngeal" type="checkbox">Retropharyngeal,
+<input name="L_Parapharyngeal" type="checkbox">Parapharyngeal,
+<input name="L_Parotid" type="checkbox">Parotid,
+<input name="L_Suboccipital" type="checkbox">Suboccipital,
+<input name="L_Retroauricular" type="checkbox">Retroauricular,
+</p>
+<p>Maximum size of the largest positive node(long axis):<input name="N_Size" type="text" size="2">cm</p>
+<p><input name="ENE" type="checkbox">Evidence of Extranodal extension (ENE)</p>
+
+<p>&nbsp;</p>
+<p><b>Distant metastasis (in this study):</b></p>
+<p><input name="Lung" type="checkbox">Lung,
+<input name="Bone" type="checkbox">Bone,
+<input name="Others" type="checkbox">Others<input name="Metastasis" type="text" size="50"></p>
+
+
+		
+<br><button type="button" onclick="activeFunction()">Show TNM Staging Report</button>&nbsp;&nbsp;&nbsp;<button type="button" onclick="refresh()">Clear</button>
+</form>
+<button onclick="copyFunction()">Copy Report</button>
+
+<p>TNM Staging Report based on this imaging study:</p>
+<textarea rows="50" cols="150" id="Final_Report" name="Final_Report"></textarea>
+
+	
+		
+  <script>
+<!-- reload page -->
+function refresh()   
+{   
+window.location.reload();   
+}   
+
+<!-- Copy Function -->
+  function copyFunction() {
+  // Get the text field
+  var copyText = document.getElementById("Final_Report");
+
+  // Select the text field
+  copyText.select();
+   copyText.setSelectionRange(0, 99999); //For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  // alert("The report has been copied.");
+}   
+
+function activeFunction() {
+
+
+  if (document.form.Scan.value == "CT"){
+  CT = "■";
+  MRI = "□";
+  } else {
+  CT = "□";
+  MRI = "■";
+  }
+
+  if (document.form.T_Measure.value == "Non_assessable"){
+  Nonassessable = "■";
+  Noprimary = "□";
+  Measurable = "□";
+  Stage_T = "Tx";
+  } else if (document.form.T_Measure.value == "No"){
+  Nonassessable = "□";
+  Noprimary = "■";
+  Measurable = "□";
+  Stage_T = "T0";
+  } else {
+  Nonassessable = "□";
+  Noprimary = "□";
+  Measurable = "■";
+  Stage_T = "T1";
+  }
+  
+  if (document.form.P16.value == 1){Staging_Name = "HPV-mediated, p16-positive";}
+  else {Staging_Name = "p16-negative or Uncertain";}
+  
+  Bil_Tumor = "□";
+  
+  if (document.form.Tumor_R.checked){R_Tumor = 1; Right_Tumor = "■";} else {R_Tumor = 0; Right_Tumor = "□";}
+  if (document.form.Tumor_L.checked){L_Tumor = 1; Left_Tumor = "■";} else {L_Tumor = 0; Left_Tumor = "□";}
+  if (document.form.Tumor_R.checked && document.form.Tumor_L.checked){Right_Tumor = "□"; Left_Tumor = "□"; Bil_Tumor = "■";}
+    
+  if (document.form.Tongue_Base.checked){Tongue_Base = "■";} else {Tongue_Base = "□";}
+  if (document.form.Tonsil.checked){Tonsil = "■";} else {Tonsil = "□";}
+  if (document.form.Soft_Palate.checked){Soft_Palate = "■"; R_Tumor = 1;} else {Soft_Palate = "□";}
+  if (document.form.Oropharynx.checked){Oropharynx = "■"; L_Tumor = 1;} else {Oropharynx = "□";}
+  
+  if (document.form.T_Size.value > 2) {Stage_T = "T2";}
+  if (document.form.T_Size.value > 4) {Stage_T = "T3";}
+
+
+  No_Invasion = "■";
+  Yes_Invasion = "□";
+  Lingual_Epiglottis = "□";
+  
+  Larynx = "□";
+  Extrinsic = "□";
+  M_Pterygoid = "□";
+  Hard_Palate = "□";
+  Mandible = "□";
+  L_Pterygoid = "□";
+  Pterygoid = "□";
+  Nasopharynx = "□";
+  Skull = "□";
+  Carotid = "□";
+   
+  if (document.form.Lingual_Epiglottis.checked){Lingual_Epiglottis = "■"; Stage_T = "T3"; No_Invasion = "□"; Yes_Invasion = "■";}
+    
+  if (document.form.Larynx.checked){Larynx = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Extrinsic.checked){Extrinsic = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.M_Pterygoid.checked){M_Pterygoid = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Hard_Palate.checked){Hard_Palate = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Mandible.checked){Mandible = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
+    
+  if (document.form.L_Pterygoid.checked){L_Pterygoid = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Pterygoid.checked){Pterygoid = "■"; Stage_T = "T4b"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Nasopharynx.checked){Nasopharynx = "■"; Stage_T = "T4b"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Skull.checked){Skull = "■"; Stage_T = "T4b"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Carotid.checked){Carotid = "■"; Stage_T = "T4b"; No_Invasion = "□"; Yes_Invasion = "■";}
+
+
+  if (document.form.P16.value == 1){
+  if ((Stage_T == "T4a") || (Stage_T == "T4b")) {Stage_T = "T4";}
+  }
+    
+  
+  Stage_N = "N0";
+  R_IA = "□";
+  R_IB = "□";
+  R_IIA = "□";
+  R_IIB = "□";
+  R_III = "□";
+  R_IV = "□"; 
+  R_VA = "□";
+  R_VB = "□";
+  R_VI = "□";
+  R_VII = "□";
+  R_Facial = "□";
+  R_Retropharyngeal = "□";
+  R_Parapharyngeal = "□";
+  R_Parotid = "□";
+  R_Suboccipital = "□";
+  R_Retroauricular = "□";
+  L_IA = "□";
+  L_IB = "□";
+  L_IIA = "□";
+  L_IIB = "□";
+  L_III = "□";
+  L_IV = "□"; 
+  L_VA = "□";
+  L_VB = "□";
+  L_VI = "□";
+  L_VII = "□";
+  L_Facial = "□";
+  L_Retropharyngeal = "□";
+  L_Parapharyngeal = "□";
+  L_Parotid = "□";
+  L_Suboccipital = "□";
+  L_Retroauricular = "□";
+  R_Node = 0;
+  L_Node = 0;
+  Contralateral = 0;
+  Bilateral = 0;
+  
+  if (document.form.R_IA.checked) {R_IA = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_IB.checked) {R_IB = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_IIA.checked) {R_IIA = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_IIB.checked) {R_IIB = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_III.checked) {R_III = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_IV.checked) {R_IV = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_VA.checked) {R_VA = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_VB.checked) {R_VB = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_VI.checked) {R_VI = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_VII.checked) {R_VII = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_Facial.checked) {R_Facial = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_Retropharyngeal.checked) {R_Retropharyngeal = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_Parapharyngeal.checked) {R_Parapharyngeal = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_Parotid.checked) {R_Parotid = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_Suboccipital.checked) {R_Suboccipital = "■";  R_Node = 1; Stage_N = "N1";}
+  if (document.form.R_Retroauricular.checked) {R_Retroauricular = "■";  R_Node = 1; Stage_N = "N1";}
+   
+  if (document.form.L_IA.checked) {L_IA = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_IB.checked) {L_IB = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_IIA.checked) {L_IIA = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_IIB.checked) {L_IIB = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_III.checked) {L_III = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_IV.checked) {L_IV = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_VA.checked) {L_VA = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_VB.checked) {L_VB = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_VI.checked) {L_VI = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_VII.checked) {L_VII = "■"; L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_Facial.checked) {L_Facial = "■";  L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_Retropharyngeal.checked) {L_Retropharyngeal = "■";  L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_Parapharyngeal.checked) {L_Parapharyngeal = "■";  L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_Parotid.checked) {L_Parotid = "■";  L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_Suboccipital.checked) {L_Suboccipital = "■";  L_Node = 1; Stage_N = "N1";}
+  if (document.form.L_Retroauricular.checked) {L_Retroauricular = "■";  L_Node = 1; Stage_N = "N1";}
+
+    
+  if (document.form.N_Size.value > 3) {Stage_N = "N2a";}
+  
+  if (R_Node == 1 || L_Node == 1){
+  if (document.form.Node_Number.value == 2) {Stage_N = "N2b";}
+  }
+  
+  if (R_Node == 1 && L_Node == 1){Stage_N = "N2c"; Bilateral = 1;}
+  else
+  {
+  if ((R_Node != R_Tumor) && (L_Node != L_Tumor) && (document.form.Node_Number.value > 0)){Stage_N = "N2c"; Contralateral = 1;}
+  }
+ 
+  if (document.form.N_Size.value > 6) {Stage_N = "N3a";}
+      
+  if (document.form.ENE.checked){
+  ENE = "■";
+  
+  if ((document.form.Node_Number.value == 1) && (document.form.N_Size.value <= 3) && (Contralateral == 0)){Stage_N = "N2a";}
+  else {Stage_N = "N3b";}
+  
+  } else {
+  ENE = "□";
+  }
+ 
+  if (Stage_N == "N0") {No_Lymphadenopathy = "■";} else {No_Lymphadenopathy = "□";}
+
+  if (document.form.P16.value == 1){
+     if (document.form.Node_Number.value > 0){
+        if (document.form.N_Size.value > 6){Stage_N = "N3";}
+		else {
+		  if ((Contralateral == 1) || (Bilateral == 1)){Stage_N = "N2";}
+		  else {Stage_N = "N1";}
+		}
+	    }
+	}
+
+
+
+  Stage_M = "M0";
+  No_Metastasis = "■";
+  Yes_Metastasis = "□";
+  Lung = "□";
+  Bone = "□";
+  Others = "□";
+  if (document.form.Lung.checked) {Lung = "■"; Stage_M = "M1"; No_Metastasis = "□"; Yes_Metastasis = "■";}
+  if (document.form.Bone.checked) {Bone = "■"; Stage_M = "M1"; No_Metastasis = "□"; Yes_Metastasis = "■";}
+  if (document.form.Others.checked) {Others = "■"; Stage_M = "M1"; No_Metastasis = "□"; Yes_Metastasis = "■";}
+
+  Limitation = "";
+  if (document.form.Limitation.checked) {Limitation = "Caution: Possible under stage due to limited scan range not fully covering the whole head and neck";}
+
+
+ document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Oropharyngeal Carcinoma AJCC 8th #\nHPV-mediated condition: " + Staging_Name + "\n\n1.Imaging Madality: " + CT + "CT Scan  or  " + MRI + "MRI Scan\n\n2.Tumor Location and Size\n" + Nonassessable + "Non-assessable,  " + Noprimary + "No evidence of primary tumor,  " + Measurable + "Measurable: Size(largest diameter):" + document.form.T_Size.value + "cm\nTumor location\nLaterality: "+ Right_Tumor + "Right, " + Left_Tumor + "Left, " + Bil_Tumor + "Bilateral,\nTumor location:\n" + Tongue_Base + "Tongue base, " + Tonsil + "Tonsillar fossa,\n" + Soft_Palate + "Soft palate, " + Oropharynx + "Oropharyngeal walls\n\n3.Tumor invasion\n"+ No_Invasion + "No or Equivocal\n" + Yes_Invasion + "Yes, As the following:\nT3\n" + Lingual_Epiglottis + "Extension to lingual surface of epiglottis\nT4a\n" + Larynx + "Larynx "+ Extrinsic + "Extrinsic muscle of tongue " + M_Pterygoid + "Medial pterygoid muscle\n" + Hard_Palate + "Hard palate " + Mandible + "Mandible\nT4b\n" + L_Pterygoid + "Lateral pterygoid muscle " + Pterygoid + "Pterygoid plates " + Nasopharynx + "Lateral nasopharynx\n" + Skull + "Skull base " + Carotid + "Encasement of carotid artery\n\n4. Neck Lymph Node\nImage_based posivite lymph node\n" + No_Lymphadenopathy + "No or Equivocal\nRight neck level:\n" + R_IA + "IA  " + R_IB + "IB  " + R_IIA + "IIA  " + R_IIB + "IIB  " + R_III + "III  " + R_IV + "IV  " + R_VA + "VA  " + R_VB + "VB  " + R_VI + "VI  " + R_VII + "VII  " + R_Facial + "Facial  " + R_Retropharyngeal + "Retropharyngeal  " + R_Parapharyngeal + "Parapharyngeal  " + R_Parotid + "Parotid  " + R_Suboccipital + "Suboccipital  " + R_Retroauricular + "Retroauricular\nLeft neck level:\n" + L_IA + "IA  " + L_IB + "IB  " + L_IIA + "IIA  " + L_IIB + "IIB  " + L_III + "III  " + L_IV + "IV  " + L_VA + "VA  " + L_VB + "VB  " + L_VI + "VI  " + L_VII + "VII  " + L_Facial + "Facial  " + L_Retropharyngeal + "Retropharyngeal  " + L_Parapharyngeal + "Parapharyngeal  " + L_Parotid + "Parotid  " + L_Suboccipital + "Suboccipital  " + L_Retroauricular + "Retroauricular\nMaximal size of the largest positive node(long axis):" + document.form.N_Size.value + "cm\n" + ENE + "Evidence of Extranodal extension (ENE)\n\n5. Distant metastasis (In this study)\n" + No_Metastasis + "No or Equivocal\n" + Yes_Metastasis + "Yes, as the following: " + Lung + "Lung  " + Bone + "Bone  " + Others + "Others: " + document.form.Metastasis.value + "\n\nTNM staging based on this imaging study(" + Staging_Name + "):" + Stage_T + Stage_N + Stage_M + "\n" + Limitation;
+ }    
+ 
+  </script>
+</body>
+</html>
