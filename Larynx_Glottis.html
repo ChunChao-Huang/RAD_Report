@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	 <head>
- 		<title>Laryngeal Cancer (Supraglottis) Staging Form</title>
+ 		<title>Laryngeal Cancer (Glottis) Staging Form</title>
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Laryngeal Cancer (Supraglottis) Staging Form (Updated:2024/06/02)</u></b></font></p>
+		<p><font size=6><b><u>Laryngeal Cancer (Glottis) Staging Form (Updated:2024/06/02)</u></b></font></p>
 		
-		<p><font size=4>Imaging Report Form for Laryngeal Cancer (Supraglottis) AJCC 8th</font></p>
+		<p><font size=4>Imaging Report Form for Laryngeal Cancer (Glottis) AJCC 8th</font></p>
 <form name="form">
 
 <p><b>Scan Modality:</b>
@@ -22,19 +22,15 @@
 <p>Tumor location</p>
 <p>Laterality: <input name="Tumor_R" type="checkbox" value="Right">Right, <input name="Tumor_L" type="checkbox" value="Left">Left,</p>
 <p>Tumor location:</p>
-<p><input name="Suprahyoid_Epiglottis" type="checkbox">Suprahyoid epiglottis, <input name="Aryepiglottic_Fold" type="checkbox">Aryepiglottic folds, <input name="Laryngeal_Aspect" type="checkbox">Laryngeal aspect,</p>
-<p><input name="Infrahyoid_Epiglottis" type="checkbox">Infrahyoid epiglottis, <input name="False_VC" type="checkbox">False vocal cords (ventricular folds/bands), <input name="Arytenoids" type="checkbox">Arytenoids,</p>
+<p><input name="Vocal_Cord" type="checkbox">Vocal cords, <input name="Anterior_Commissure" type="checkbox">Anterior commissure, <input name="Posterior_Commissure" type="checkbox">Posterior commissure,</p>
 
 <p><b>Tumor Invasion:</b></p>
 <p><b>T2:</b>
-<input name="Glottis" type="checkbox">Glottis,
-<input name="Tongue_Base" type="checkbox">Mucosa of base of tongue,
-<input name="Vallecula" type="checkbox">Vallecula,
-<input name="M_Pyriform" type="checkbox">Medial wall of pyriform sinus,
+<input name="Supraglottis" type="checkbox">Supraglottis,
+<input name="Subglottis" type="checkbox">Subglottis,
+<input name="Impaired_VC" type="checkbox">Impaired vocal cord mobility,
 <p><b>T3:</b>
 <input name="VC" type="checkbox">Vocal cord fixation,
-<input name="Postcricoid" type="checkbox">Postcricoid area,
-<input name="Preepiglottic" type="checkbox">Pre-epiglottic space,
 <input name="Paraglottic" type="checkbox">Paraglottic space,
 <input name="Inner_Thyroid" type="checkbox">Inner cortex of the thyroid cartilage,
 <p><b>T4a:</b>
@@ -162,34 +158,28 @@ function activeFunction() {
   Nonassessable = "□";
   Noprimary = "□";
   Measurable = "■";
-  Stage_T = "T1";
+  Stage_T = "T1a";
   }
   
   Bil_Tumor = "□";
   
   if (document.form.Tumor_R.checked){R_Tumor = 1; Right_Tumor = "■";} else {R_Tumor = 0; Right_Tumor = "□";}
   if (document.form.Tumor_L.checked){L_Tumor = 1; Left_Tumor = "■"} else {L_Tumor = 0; Left_Tumor = "□";}
-  if (document.form.Tumor_R.checked && document.form.Tumor_L.checked){Right_Tumor = "□"; Left_Tumor = "□"; Bil_Tumor = "■";}
+  if (document.form.Tumor_R.checked && document.form.Tumor_L.checked){Right_Tumor = "□"; Left_Tumor = "□"; Bil_Tumor = "■";
+  if (document.form.Vocal_Cord.checked){Stage_T = "T1b";}
+  }
   
-  Subsite = 0;
-  if (document.form.Suprahyoid_Epiglottis.checked){Suprahyoid_Epiglottis = "■"; Subsite++;} else {Suprahyoid_Epiglottis = "□";}
-  if (document.form.Aryepiglottic_Fold.checked){Aryepiglottic_Fold = "■"; Subsite++;} else {Aryepiglottic_Fold = "□";}
-  if (document.form.Laryngeal_Aspect.checked){Laryngeal_Aspect = "■"; Subsite++;} else {Laryngeal_Aspect = "□";}
-  if (document.form.Infrahyoid_Epiglottis.checked){Infrahyoid_Epiglottis = "■"; Subsite++;} else {Infrahyoid_Epiglottis = "□";}
-  if (document.form.False_VC.checked){False_VC = "■"; Subsite++;} else {False_VC = "□";}
-  if (document.form.Arytenoids.checked){Arytenoids = "■"; Subsite++;} else {Arytenoids = "□";}
-
-  if (Subsite > 1) {Stage_T = "T2";}
+  if (document.form.Vocal_Cord.checked){Vocal_Cord = "■";} else {Vocal_Cord = "□";}
+  if (document.form.Anterior_Commissure.checked){Anterior_Commissure = "■";} else {Anterior_Commissure = "□";}
+  if (document.form.Posterior_Commissure.checked){Posterior_Commissure = "■";} else {Posterior_Commissure = "□";}
+ 
 
   No_Invasion = "■";
   Yes_Invasion = "□";
-  Glottis = "□";
-  Tongue_Base = "□";
-  Vallecula = "□";
-  M_Pyriform = "□";
+  Supraglottis = "□";
+  Subglottis = "□";
+  Impaired_VC = "□";
   VC = "□";
-  Postcricoid = "□";
-  Preepiglottic = "□";
   Paraglottic = "□";
   Inner_Thyroid = "□";
   Outer_Thyroid = "□";
@@ -205,17 +195,14 @@ function activeFunction() {
   Carotid = "□";
 
    
-  if (document.form.Glottis.checked){Glottis = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
-  if (document.form.Tongue_Base.checked){Tongue_Base = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
-  if (document.form.Vallecula.checked){Vallecula = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
-  if (document.form.M_Pyriform.checked){M_Pyriform = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
-
+  if (document.form.Supraglottis.checked){Supraglottis = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Subglottis.checked){Subglottis = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
+  if (document.form.Impaired_VC.checked){Impaired_VC = "■"; Stage_T = "T2"; No_Invasion = "□"; Yes_Invasion = "■";}
+  
   if (document.form.VC.checked){VC = "■"; Stage_T = "T3"; No_Invasion = "□"; Yes_Invasion = "■";}
-  if (document.form.Postcricoid.checked){Postcricoid = "■"; Stage_T = "T3"; No_Invasion = "□"; Yes_Invasion = "■";}
-  if (document.form.Preepiglottic.checked){Preepiglottic = "■"; Stage_T = "T3"; No_Invasion = "□"; Yes_Invasion = "■";}
   if (document.form.Paraglottic.checked){Paraglottic = "■"; Stage_T = "T3"; No_Invasion = "□"; Yes_Invasion = "■";}
   if (document.form.Inner_Thyroid.checked){Inner_Thyroid = "■"; Stage_T = "T3"; No_Invasion = "□"; Yes_Invasion = "■";}
-  
+    
   if (document.form.Outer_Thyroid.checked){Outer_Thyroid = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
   if (document.form.Trachea.checked){Trachea = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
   if (document.form.Extrinsic.checked){Extrinsic = "■"; Stage_T = "T4a"; No_Invasion = "□"; Yes_Invasion = "■";}
@@ -341,7 +328,7 @@ function activeFunction() {
   if (document.form.Limitation.checked) {Limitation = "Caution: Possible under stage due to limited scan range not fully covering the whole head and neck";}
 
 
- document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Largyngeal Carcinoma (Supraglottis) AJCC 8th #\n\n1.Imaging Madality: " + CT + "CT Scan  or  " + MRI + "MRI Scan\n\n2.Tumor Location and Size\n" + Nonassessable + "Non-assessable,  " + Noprimary + "No evidence of primary tumor,  " + Measurable + "Measurable: Size(largest diameter):" + document.form.T_Size.value + "cm\nTumor location\nLaterality: "+ Right_Tumor + "Right, " + Left_Tumor + "Left, " + Bil_Tumor + "Bilateral,\nTumor location:\n" + Suprahyoid_Epiglottis + "Suprahyoid epiglottis " + Aryepiglottic_Fold + "Aryepiglottic fold\n" + Laryngeal_Aspect + "Laryngeal aspect " + Infrahyoid_Epiglottis + "Infrahyoid epiglottis\n" + False_VC + "False vocal cords " + Arytenoids + "Arytenoids\n\n3.Tumor invasion\n" + No_Invasion + "No or Equivocal\n" + Yes_Invasion + "Yes, As the following:\nT2\n" + Glottis + "Glottis " + Tongue_Base + "Mucosa of base of tongue\n"+ Vallecula + "Vallecula " + M_Pyriform + "Medial wall of pyriform sinus\nT3\n" + VC + "Vocal cord fixation " + Postcricoid + "Postcricoid area " + Preepiglottic + "Preepiglottic space\n" + Paraglottic + "Paraglottic space " + Inner_Thyroid + "Inner cortex of the thyroid cartilage\nT4a\n" + Outer_Thyroid + "Outer cortex of the thyroid cartilage " + Trachea + "Trachea " + Extrinsic + "Deep extrinsic muscle of the tongue\n" + Strap_Muscle + "Strap muscles " + Thyroid_Gland + "Thyroid gland " + Esophagus + "Esophagus" + Cricoid_Cartilage + "Cricoid cartilage\nT4b\n" + Prevertebral_Space + "Prevertebral space " + Mediastinum + "Mediastinal structures " + Carotid + "Encasement of carotid artery\n\n4. Neck Lymph Node\nImage_based posivite lymph node\n" + No_Lymphadenopathy + "No or Equivocal\nRight neck level:\n" + R_IA + "IA  " + R_IB + "IB  " + R_IIA + "IIA  " + R_IIB + "IIB  " + R_III + "III  " + R_IV + "IV  " + R_VA + "VA  " + R_VB + "VB  " + R_VI + "VI  " + R_VII + "VII  " + R_Facial + "Facial  " + R_Retropharyngeal + "Retropharyngeal  " + R_Parapharyngeal + "Parapharyngeal  " + R_Parotid + "Parotid  " + R_Suboccipital + "Suboccipital  " + R_Retroauricular + "Retroauricular\nLeft neck level:\n" + L_IA + "IA  " + L_IB + "IB  " + L_IIA + "IIA  " + L_IIB + "IIB  " + L_III + "III  " + L_IV + "IV  " + L_VA + "VA  " + L_VB + "VB  " + L_VI + "VI  " + L_VII + "VII  " + L_Facial + "Facial  " + L_Retropharyngeal + "Retropharyngeal  " + L_Parapharyngeal + "Parapharyngeal  " + L_Parotid + "Parotid  " + L_Suboccipital + "Suboccipital  " + L_Retroauricular + "Retroauricular\nMaximal size of the largest positive node(long axis):" + document.form.N_Size.value + "cm\n" + ENE + "Evidence of Extranodal extension (ENE)\n\n5. Distant metastasis (In this study)\n" + No_Metastasis + "No or Equivocal\n" + Yes_Metastasis + "Yes, as the following: " + Lung + "Lung  " + Bone + "Bone  " + Others + "Others: " + document.form.Metastasis.value + "\n\nTNM staging based on this imaging study: " + Stage_T + Stage_N + Stage_M + "\n" + Limitation;
+ document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Largyngeal Carcinoma (Glottis) AJCC 8th #\n\n1.Imaging Madality: " + CT + "CT Scan  or  " + MRI + "MRI Scan\n\n2.Tumor Location and Size\n" + Nonassessable + "Non-assessable,  " + Noprimary + "No evidence of primary tumor,  " + Measurable + "Measurable: Size(largest diameter):" + document.form.T_Size.value + "cm\nTumor location\nLaterality: "+ Right_Tumor + "Right, " + Left_Tumor + "Left, " + Bil_Tumor + "Bilateral,\nTumor location:\n" + Vocal_Cord + "Vocal cord " + Anterior_Commissure + "Anterior commissure " + Posterior_Commissure + "Posterior commissure\n\n3.Tumor invasion\n" + No_Invasion + "No or Equivocal\n" + Yes_Invasion + "Yes, As the following:\nT2\n" + Supraglottis + "Supraglottis " + Subglottis + "Subglottis "+ Impaired_VC + "Impaired vocal cord mobility\nT3\n" + VC + "Vocal cord fixation " + Paraglottic + "Paraglottic space " + Inner_Thyroid + "Inner cortex of the thyroid cartilage\nT4a\n" + Outer_Thyroid + "Outer cortex of the thyroid cartilage " + Trachea + "Trachea " + Extrinsic + "Deep extrinsic muscle of the tongue\n" + Strap_Muscle + "Strap muscles " + Thyroid_Gland + "Thyroid gland " + Esophagus + "Esophagus" + Cricoid_Cartilage + "Cricoid cartilage\nT4b\n" + Prevertebral_Space + "Prevertebral space " + Mediastinum + "Mediastinal structures " + Carotid + "Encasement of carotid artery\n\n4. Neck Lymph Node\nImage_based posivite lymph node\n" + No_Lymphadenopathy + "No or Equivocal\nRight neck level:\n" + R_IA + "IA  " + R_IB + "IB  " + R_IIA + "IIA  " + R_IIB + "IIB  " + R_III + "III  " + R_IV + "IV  " + R_VA + "VA  " + R_VB + "VB  " + R_VI + "VI  " + R_VII + "VII  " + R_Facial + "Facial  " + R_Retropharyngeal + "Retropharyngeal  " + R_Parapharyngeal + "Parapharyngeal  " + R_Parotid + "Parotid  " + R_Suboccipital + "Suboccipital  " + R_Retroauricular + "Retroauricular\nLeft neck level:\n" + L_IA + "IA  " + L_IB + "IB  " + L_IIA + "IIA  " + L_IIB + "IIB  " + L_III + "III  " + L_IV + "IV  " + L_VA + "VA  " + L_VB + "VB  " + L_VI + "VI  " + L_VII + "VII  " + L_Facial + "Facial  " + L_Retropharyngeal + "Retropharyngeal  " + L_Parapharyngeal + "Parapharyngeal  " + L_Parotid + "Parotid  " + L_Suboccipital + "Suboccipital  " + L_Retroauricular + "Retroauricular\nMaximal size of the largest positive node(long axis):" + document.form.N_Size.value + "cm\n" + ENE + "Evidence of Extranodal extension (ENE)\n\n5. Distant metastasis (In this study)\n" + No_Metastasis + "No or Equivocal\n" + Yes_Metastasis + "Yes, as the following: " + Lung + "Lung  " + Bone + "Bone  " + Others + "Others: " + document.form.Metastasis.value + "\n\nTNM staging based on this imaging study: " + Stage_T + Stage_N + Stage_M + "\n" + Limitation;
  }    
  
   </script>
