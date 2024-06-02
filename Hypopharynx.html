@@ -283,7 +283,7 @@ function activeFunction() {
   if (R_Node == 1 && L_Node == 1){Stage_N = "N2c";}
   else
   {  
-  if ((Subsite > 0) && (R_Node != R_Tumor) && (L_Node != L_Tumor)){Stage_N = "N2c"; Contralateral = 1;}
+  if ((Subsite > 0) && (R_Node != R_Tumor) && (L_Node != L_Tumor) && (document.form.Node_Number.value > 0)){Stage_N = "N2c"; Contralateral = 1;}
   }
  
   if (document.form.N_Size.value > 6) {Stage_N = "N3a";}
