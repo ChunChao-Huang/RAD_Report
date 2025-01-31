@@ -5,7 +5,7 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Endovascular thrombectomy Reporting Platform(Updated:2025/01/21)</u></b></font></p>
+		<p><font size=6><b><u>Endovascular thrombectomy Reporting Platform(Updated:2025/01/31)</u></b></font></p>
 <form name="form">
 
 <p><b>Anesthesia:</b>
@@ -185,7 +185,8 @@ CBF&lt;20%=&nbsp;<input name="CBF20" type="text" size="2">ml,&nbsp;&nbsp;CBF&lt;
 <p>Operator (for Neurologist only):
 <input name="Operator" type="radio" value="" checked>Neuroradiologist,&nbsp;&nbsp;
 <input name="Operator" type="radio" value="4189">4189,&nbsp;&nbsp;
-<input name="Operator" type="radio" value="4191">4191</p>
+<input name="Operator" type="radio" value="4191">4191,&nbsp;&nbsp;
+<input name="Operator" type="radio" value="5443">5443</p>
 
 
 <p>Other notes:<br><textarea rows="5" cols="150" name="Others" value=""></textarea></br><p>
@@ -363,6 +364,8 @@ function activeFunction() {
   Operator = "周兆亮 CL Chou\n神經科專科醫師 神專795號\n中華民國神經放射線醫學會 動脈取栓認證 006號";
   } else if (document.form.Operator.value == "4191"){
   Operator = "黃勇評 YP Hwang\n神經科專科醫師 神專1060號\n中華民國神經放射線醫學會 動脈取栓認證 022號";
+  } else if (document.form.Operator.value == "5443"){
+  Operator = "黃志凱 CK Wong\n神經科專科醫師 神專1497號\n中華民國神經放射線醫學會 動脈取栓認證 174號";
   } else {
   Operator = "";
   }
