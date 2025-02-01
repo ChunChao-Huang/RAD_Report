@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+ 		<title> Alzheimer's disease MRI Survey Report</title>
+ 	 </head>
+	 <body>
+    	
+		<p><font size=6><b><u>Alzheimer's disease MRI for Survey Reporting Platform(Updated:2025/02/01)</u></b></font></p>
+<form name="form">
+		
+<!-- GCA scale -->
+<p><font size=4><b>GCA (Global Cortical Atrophy) scale (Recommended on Axial T2FLAIR images):</b></font></p>
+<p>Please Scoring 0-3 points for the 13 regions separately.</p>
+<table border=1><td>
+<p>Definition:</p>
+<p>0: Normal volume / No ventricular enlargement</p>
+<p>1: Opening of sulci / Mild ventricular enlargement</p>
+<p>2: Volume loss of gyri / Moderate ventricular enlargement</p>
+<p>3: 'Knife blade' atrophy / Severe ventricular enlargement</p>
+</td>
+<td>
+<img src="https://raw.githubusercontent.com/ChunChao-Huang/RAD_Report/refs/heads/main/GCA_Scale.jpg" width="400" height=auto>
+</td></table>
+
+<table border=1>
+<tr>
+<td align="center"><b>Sulcal dilatation (6 regions):</b></td>
+<td align="center"><b>Ventricular dilatation (7 regions):</b></td>
+</tr>
+<tr>
+<td align="right">
+<p>Right frontal lobe:<input name="GCA_RFL" type="radio" value="0" checked/>0,<input name="GCA_RFL" type="radio" value="1">1,<input name="GCA_RFL" type="radio" value="2">2,<input name="GCA_RFL" type="radio" value="3">3,</p>
+<p>Left frontal lobe:<input name="GCA_LFL" type="radio" value="0" checked/>0,<input name="GCA_LFL" type="radio" value="1">1,<input name="GCA_LFL" type="radio" value="2">2,<input name="GCA_LFL" type="radio" value="3">3,</p>
+<p>Right parieto-occipital lobe:<input name="GCA_RPOL" type="radio" value="0" checked/>0,<input name="GCA_RPOL" type="radio" value="1">1,<input name="GCA_RPOL" type="radio" value="2">2,<input name="GCA_RPOL" type="radio" value="3">3,</p>
+<p>Left parieto-occipital lobe:<input name="GCA_LPOL" type="radio" value="0" checked/>0,<input name="GCA_LPOL" type="radio" value="1">1,<input name="GCA_LPOL" type="radio" value="2">2,<input name="GCA_LPOL" type="radio" value="3">3,</p>
+<p>Right temporal lobe:<input name="GCA_RTL" type="radio" value="0" checked/>0,<input name="GCA_RTL" type="radio" value="1">1,<input name="GCA_RTL" type="radio" value="2">2,<input name="GCA_RTL" type="radio" value="3">3,</p>
+<p>Left temporal lobe:<input name="GCA_LTL" type="radio" value="0" checked/>0,<input name="GCA_LTL" type="radio" value="1">1,<input name="GCA_LTL" type="radio" value="2">2,<input name="GCA_LTL" type="radio" value="3">3,</p>
+</td>
+<td align="right">
+<p>Right frontal horn:<input name="GCA_RFH" type="radio" value="0" checked/>0,<input name="GCA_RFH" type="radio" value="1">1,<input name="GCA_RFH" type="radio" value="2">2,<input name="GCA_RFH" type="radio" value="3">3,</p>
+<p>Left frontal horn:<input name="GCA_LFH" type="radio" value="0" checked/>0,<input name="GCA_LFH" type="radio" value="1">1,<input name="GCA_LFH" type="radio" value="2">2,<input name="GCA_LFH" type="radio" value="3">3,</p>
+<p>Right parieto-occipital horn:<input name="GCA_RPOH" type="radio" value="0" checked/>0,<input name="GCA_RPOH" type="radio" value="1">1,<input name="GCA_RPOH" type="radio" value="2">2,<input name="GCA_RPOH" type="radio" value="3">3,</p>
+<p>Left parieto-occipital horn:<input name="GCA_LPOH" type="radio" value="0" checked/>0,<input name="GCA_LPOH" type="radio" value="1">1,<input name="GCA_LPOH" type="radio" value="2">2,<input name="GCA_LPOH" type="radio" value="3">3,</p>
+<p>Right temporal horn:<input name="GCA_RTH" type="radio" value="0" checked/>0,<input name="GCA_RTH" type="radio" value="1">1,<input name="GCA_RTH" type="radio" value="2">2,<input name="GCA_RTH" type="radio" value="3">3,</p>
+<p>Left temporal horn:<input name="GCA_LTH" type="radio" value="0" checked/>0,<input name="GCA_LTH" type="radio" value="1">1,<input name="GCA_LTH" type="radio" value="2">2,<input name="GCA_LTH" type="radio" value="3">3,</p>
+<p>Third ventricle:<input name="GCA_3V" type="radio" value="0" checked/>0,<input name="GCA_3V" type="radio" value="1">1,<input name="GCA_3V" type="radio" value="2">2,<input name="GCA_3V" type="radio" value="3">3,</p>
+</td>
+</tr>
+</table>
+
+
+<!-- MTA scale -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p><font size=4><b>MTA (Medial Temporal lobe Atrophy) scale (Recommended on Coronal T1W images):</b></font></p>
+<p>The score is based on a visual rating of the followings:</p>
+<p>(1)	The width of the choroid fissure,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)	The width of the temporal horn,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)	The height of the hippocampal formation</p>
+
+<table border=1><td>
+<p><input name="MTA" type="radio" value="0" checked>Score 0: No atrophy</p>
+<p><input name="MTA" type="radio" value="1">Score 1: Only widening of choroid fissure</p>
+<p><input name="MTA" type="radio" value="2">Score 2: Also widening of temporal horn of lateral ventricle</p>
+<p><input name="MTA" type="radio" value="3">Score 3: Moderate loss of hippocampal volume (Decrease in height)</p>
+<p><input name="MTA" type="radio" value="4">Score 4: Severe volume loss of hippocampus</p>
+</td><td>
+<img src="https://raw.githubusercontent.com/ChunChao-Huang/RAD_Report/refs/heads/main/MTA_Scale.jpg" width="500" height=auto>
+</td></table>
+
+<!-- Fazekas scale -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p><font size=4><b>Fazekas scale (White matter T2FLAIR hyperintensity lesions) (Only on Axial T2FLAIR images):</b></font></p>
+
+<table border=1><td>
+<p><input name="Fazekas" type="radio" value="0" checked>Score 0: None or a single punctate lesion</p>
+<p><input name="Fazekas" type="radio" value="1">Score 1: Multiple punctate lesions</p>
+<p><input name="Fazekas" type="radio" value="2">Score 2: Beginning confluency of lesions (bridging)</p>
+<p><input name="Fazekas" type="radio" value="3">Score 3: Large confluent lesions</p>
+</td><td>
+<img src="https://raw.githubusercontent.com/ChunChao-Huang/RAD_Report/refs/heads/main/Fazekas_Scale.jpg" width="400" height=auto>
+</td></table>
+
+
+<!-- Others -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p>Other findings:<br><textarea rows="15" cols="120" name="Others" value=""></textarea></br><p>
+		
+<br><button type="button" onclick="activeFunction()">Show Final Report</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="refresh()">Clear</button>
+</form>
+<button onclick="copyFunction()">Copy Report</button>
+
+<p>Final Report:</p>
+<textarea rows="20" cols="120" id="Final_Report" name="Final_Report"></textarea>
+
+			
+		
+  <script>
+<!-- reload page -->
+function refresh()   
+{   
+window.location.reload();   
+}   
+
+	   <!-- Copy Function -->
+  function copyFunction() {
+  // Get the text field
+  var copyText = document.getElementById("Final_Report");
+
+  // Select the text field
+  copyText.select();
+   copyText.setSelectionRange(0, 99999); //For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  // alert("The report has been copied.");
+}   
+  
+function activeFunction() {
+<!-- Calculating average GCA scale -->
+  
+  Total_GCA = Number(document.form.GCA_RFL.value) + Number(document.form.GCA_LFL.value) + Number(document.form.GCA_RPOL.value) + Number(document.form.GCA_LPOL.value) + Number(document.form.GCA_RTL.value) + Number(document.form.GCA_LTL.value) + Number(document.form.GCA_RFH.value) + Number(document.form.GCA_LFH.value) + Number(document.form.GCA_RPOH.value) + Number(document.form.GCA_LPOH.value) + Number(document.form.GCA_RTH.value) + Number(document.form.GCA_LTH.value) + Number(document.form.GCA_3V.value);
+  Average_GCA = Total_GCA/13;
+  Average_GCA = Average_GCA.toFixed(2);
+  
+  var Result_GCA = "No to Mild atrophy"; 
+  if (Average_GCA > 1){Result_GCA = "Mild to Moderate atrophy";}
+  if (Average_GCA > 2){Result_GCA = "Moderate to Severe atrophy";}
+  
+
+  if (document.form.MTA.value == 0){Result_MTA = "No atrophy";}
+  else if (document.form.MTA.value == 1){Result_MTA = "Only widening of choroid fissure";}
+  else if (document.form.MTA.value == 2){Result_MTA = "Widening of temporal horn of lateral ventricle";}
+  else if (document.form.MTA.value == 3){Result_MTA = "Moderate loss of hippocampal volume";}
+  else{Result_MTA = "Severe volume loss of hippocampus";}
+
+  if (document.form.Fazekas.value == 0){Result_Fazekas = "None or a single punctate lesion";}
+  else if (document.form.Fazekas.value == 1){Result_Fazekas = "Multiple punctate lesions";}
+  else if (document.form.Fazekas.value == 2){Result_Fazekas = "Beginning confluency of lesions";}
+  else{Result_Fazekas = "Large confluent lesions";}  
+  
+  
+  <!-- Others -->
+  var Others = document.getElementsByName('Others')[0].value;
+  if (Others == ""){
+  var Others = "Nil"
+  }  
+  
+		
+  document.getElementById('Final_Report').innerHTML = "Brain MRI without enhancement for evaluating dementia, mainly including the sequences of T1WI, T2WI, T2FLAIR, DWI and T2*:\n\nGCA (Global cortical atrophy) scale: Average:"+ Average_GCA + " (Total:" + Total_GCA + ")\nThe definition of GCA scale:\n0: Normal volume / No ventricular enlargement\n1: Opening of sulci / Mild ventricular enlargement\n2: Volume loss of gyri / Moderate ventricular enlargement\n3: 'Knife blade' atrophy / Severe ventricular enlargement\n\nThe details of the GCA scale for each 13 regions are the following:\nSulcal dilatation:\nRight frontal lobe: " + document.form.GCA_RFL.value + ", Left frontal lobe: " + document.form.GCA_LFL.value + ",\nRight parieto-occipital lobe: " + document.form.GCA_RPOL.value + ", Left parieto-occipital lobe: " + document.form.GCA_LPOL.value + ",\nRight temporal lobe: " + document.form.GCA_RTL.value + ", Left temporal lobe: " + document.form.GCA_LTL.value + "\nVentricular dilatation:\nRight frontal horn: " + document.form.GCA_RFH.value + ", Left frontal horn: " + document.form.GCA_LFH.value + ",\nRight parieto-occipital horn: " + document.form.GCA_RPOH.value + ", Left parieto-occipital horn: " + document.form.GCA_LPOH.value + ",\nRight temporal horn: " + document.form.GCA_RTH.value + ", Left temporal horn: " + document.form.GCA_LTH.value + ",\nThird ventricle: " + document.form.GCA_3V.value + "\n\nMTA (Medial Temporal lobe Atrophy) scale: " + document.form.MTA.value + "\nThe definition of MTA scale:\n0: No atrophy\n1: Only widening of choroid fissure\n2: Also widening of temporal horn of lateral ventricle\n3: Moderate loss of hippocampal volume (decrease in height)\n4: Severe volume loss of hippocampus\n\nFazekas scale (White matter T2FLAIR hyperintensity lesions): " + document.form.Fazekas.value + "\nThe definition of Fazekas scale:\n0: None or a single punctate lesion\n1: Multiple punctate lesions\n2: Beginning confluency of lesions (bridging)\n3: Large confluent lesions\n\nOther findings:\n" + Others + "\n\nSummary:\nGCA scale(Average): " + Average_GCA + " (" + Result_GCA + ")" + "\nMTA scale: " + document.form.MTA.value + " (" + Result_MTA + ")\nFazekas scale: " + document.form.Fazekas.value + " (" + Result_Fazekas + ")";
+}
+  </script>
+</body>
+</html>
