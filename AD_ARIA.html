@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+ 		<title> Imaging Report Form for ARIA</title>
+ 	 </head>
+	 <body>
+    	
+		<p><font size=6><b><u>Imaging Report Form for ARIA (Amyloid-Related Imaging Abnormality)(Updated:2025/02/01)</u></b></font></p>
+<form name="form">
+		
+<p>Affected locations:<input name="Location" type="text" size=80></input><p>
+
+<p>Previous MRI Microhemorrhage Numbers:<input name="P_Hemorrhage" type="text" size=10></input></p>
+
+<p><b>Sulcal and/or Cortical/Subcortical FLAIR hyperintensity:</b>
+<br><input name="Hyperintensity" type="radio" value="0" checked>None,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Hyperintensity" type="radio" value="1">Mild: 1 lesion(<5cm),</br><br><input name="Hyperintensity" type="radio" value="2">Moderate: 1 lesion(5~10cm) OR Multiple lesions(each < 10cm),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Hyperintensity" type="radio" value="3">Severe: Any lesion > 10cm
+</p><p>&nbsp;</p>
+
+<p><b>New microhemorrhage:</b>
+<br><input name="N_Hemorrhage" type="radio" value="0" checked>None,&nbsp;&nbsp;&nbsp;<input name="N_Hemorrhage" type="radio" value="1">Mild:<=4,&nbsp;&nbsp;&nbsp;<input name="N_Hemorrhage" type="radio" value="2">Moderate: 5~9,&nbsp;&nbsp;&nbsp;<input name="N_Hemorrhage" type="radio" value="3">Severe: >=10,
+</br></p><p>&nbsp;</p>
+
+<p><b>Superficial siderosis:</b>
+<br><input name="Siderosis" type="radio" value="0" checked>None,&nbsp;&nbsp;&nbsp;<input name="Siderosis" type="radio" value="1">Mild: 1 focal area,&nbsp;&nbsp;&nbsp;<input name="Siderosis" type="radio" value="2">Moderate: 2 focal areas,&nbsp;&nbsp;&nbsp;<input name="Siderosis" type="radio" value="3">Severe: >2 focal areas,
+</br></p>
+
+<!-- Others -->
+<p>Other findings:<br><textarea rows="10" cols="100" name="Others" value=""></textarea></br><p>
+		
+<br><button type="button" onclick="activeFunction()">Show Final Report</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="refresh()">Clear</button>
+</form>
+<button onclick="copyFunction()">Copy Report</button>
+
+<p>Final Report:</p>
+<textarea rows="20" cols="100" id="Final_Report" name="Final_Report"></textarea>
+
+			
+		
+  <script>
+<!-- reload page -->
+function refresh()   
+{   
+window.location.reload();   
+}   
+
+	   <!-- Copy Function -->
+  function copyFunction() {
+  // Get the text field
+  var copyText = document.getElementById("Final_Report");
+
+  // Select the text field
+  copyText.select();
+   copyText.setSelectionRange(0, 99999); //For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  // alert("The report has been copied.");
+}   
+  
+function activeFunction() {
+  
+  var Location = document.form.Location.value;
+  var Pre_Hemorrhage = document.form.P_Hemorrhage.value;
+  
+  if (Location == ""){
+  Location = "No identifiable affected area";
+  }
+  
+  if (Pre_Hemorrhage ==""){
+  Pre_Hemorrhage = "0 or Uncertain";
+  }
+  
+  
+  var ARIA_E = 0;
+  var ARIA_H = 0;
+      
+  if (document.form.Hyperintensity.value == 1){ARIA_E = 1; ARIA_E_Severity="Mild"; Result_Edema="Mild [1 lesion(<5cm)]";}
+  else if (document.form.Hyperintensity.value == 2){ARIA_E = 1; ARIA_E_Severity="Moderate"; Result_Edema="Moderate [1 lesion(5~10cm) OR Multiple lesions(each <10cm)]";}
+  else if (document.form.Hyperintensity.value == 3){ARIA_E = 1; ARIA_E_Severity="Severe"; Result_Edema="Severe [Any lesion > 10cm]";}
+  else {ARIA_E_Severity = "None"; Result_Edema = "None";}  
+  
+  if (document.form.N_Hemorrhage.value == 1){ARIA_H = 1; Result_Hemorrhage="Mild [<=4]";}
+  else if (document.form.N_Hemorrhage.value == 2){ARIA_H = 1; Result_Hemorrhage="Moderate [5~9]";}
+  else if (document.form.N_Hemorrhage.value == 3){ARIA_H = 1; Result_Hemorrhage="Severe [>=10]";}
+  else {Result_Hemorrhage = "None";}
+  	
+  if (document.form.Siderosis.value == 1){ARIA_H = 1; Result_Siderosis="Mild [1 focal area]";}
+  else if (document.form.Siderosis.value == 2){ARIA_H = 1; Result_Siderosis="Moderate [2 focal areas]";}
+  else if (document.form.Siderosis.value == 3){ARIA_H = 1; Result_Siderosis="Severe [>2 focal areas]";}
+  else {Result_Siderosis = "None";}
+
+  ARIA_H_Max = Math.max(document.form.N_Hemorrhage.value, document.form.Siderosis.value);
+  if (ARIA_H_Max == 1){ARIA_H_Severity = "Mild";}
+  else if (ARIA_H_Max == 2){ARIA_H_Severity = "Moderate";}
+  else if (ARIA_H_Max == 3){ARIA_H_Severity = "Severe";}
+  else {ARIA_H_Severity = "None";}
+      
+  if (ARIA_E == 0) {
+    if (ARIA_H ==0){
+	ARIA_Type = "None";
+    }
+    else{
+	ARIA_Type = "ARIA_H";
+	}
+  }
+  else {
+    if (ARIA_H ==0){
+	ARIA_Type = "ARIA_E";
+    }
+    else{
+	ARIA_Type = "Both ARIA_E and ARIA_H";
+	}
+  }
+    
+		
+  <!-- Others -->
+  var Others = document.getElementsByName('Others')[0].value;
+  if (Others == ""){
+  var Others = "Nil"
+  }  
+  
+		
+  document.getElementById('Final_Report').innerHTML = "Brain MRI for evaluating ARIA (Amyloid-Related Imaging Abnormalities):\n\nARIA Type: " + ARIA_Type + "\n\nAffected Locations: " + Location + "\n\nImaging finding:\n- Previous MRI Microhemorrhage Number: " + Pre_Hemorrhage + "\n- Sulcal and/or Cortical/Subcortical FLAIR hyperintensity: " + Result_Edema + "\n- New microhemorrhages: " + Result_Hemorrhage + "\n- Superficial siderosis: " + Result_Siderosis + "\n\nSeverity of ARIA:\n- ARIA-E Severity: " + ARIA_E_Severity + "\n- ARIA-H Severity: " + ARIA_H_Severity + "\n\nOther findings:\n" + Others + "\n\n----------------------\nMeanings of the two ARIA Types:\nARIA-edema/effusion (ARIA-E):\nInterstitial vasogenic edema or sulcal effusion that manifests as parenchymal or sulcal hyperintensities.\n\nARIA-hemosiderin/hemorrhage (ARIA-H):\nMicrohemorrhage (<=10mm) observed as hypointense hemosiderin deposition in the parenchymal or leptomeningeal /subpial space (superficial siderosis).";
+}
+  </script>
+</body>
+</html>
