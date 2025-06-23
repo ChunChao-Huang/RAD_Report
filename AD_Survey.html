@@ -5,7 +5,7 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Alzheimer's disease MRI for Survey Reporting Platform(Updated:2025/02/01)</u></b></font></p>
+		<p><font size=6><b><u>Alzheimer's disease MRI for Survey Reporting Platform(Updated:2025/06/24)</u></b></font></p>
 <form name="form">
 		
 <!-- GCA scale -->
@@ -79,6 +79,35 @@
 </td></table>
 
 
+<!-- Microbleeder -->
+<p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p><font size=4><b>Microbleeder evaluation (On Filtered phase images and SWI images):</b></font></p>
+
+<table border=1><tr><td rowspan=2>
+<p>1. Check the internal cerebral vein signal intensity on filtered phase images: (bright means blood is bright on filtered phase images</p>
+<p>2. Count SWI low signal spots (with high signal on filtered phase images)</p>
+<p>3. Select the number of microbleeders</p>
+<p><input name="Microbleeder_N" type="radio" value="0" checked>0&nbsp;&nbsp;&nbsp;<input name="Microbleeder_N" type="radio" value="1">1&nbsp;&nbsp;&nbsp;<input name="Microbleeder_N" type="radio" value="2">2&nbsp;&nbsp;&nbsp;<input name="Microbleeder_N" type="radio" value="3">3&nbsp;&nbsp;&nbsp;<input name="Microbleeder_N" type="radio" value="4">4&nbsp;&nbsp;&nbsp;<input name="Microbleeder_N" type="radio" value="5">More than 4</p>
+<p>4. Is there any hemorrhage larger than 10mm</p>
+<p><input name="Microbleeder_L" type="radio" value="No" checked>No&nbsp;&nbsp;&nbsp;<input name="Microbleeder_L" type="radio" value="Yes">Yes</p>
+<p>5. Is the pattern suspicious for Cerebral amyloid angiopathy (CAA)</p>
+<p><input name="CAA" type="radio" value="No" checked>No&nbsp;&nbsp;&nbsp;<input name="CAA" type="radio" value="Yes">Yes</p>
+
+</td><td>
+See the center (may reconstructed to coronal view)
+<img src="https://raw.githubusercontent.com/ChunChao-Huang/RAD_Report/refs/heads/main/SWI_1.jpg" width="400" height=auto>
+</td>
+</td>
+</tr>
+<tr>
+<td>
+Center signal is correct in small lesions but Margin signal is correct in large lesions
+<img src="https://raw.githubusercontent.com/ChunChao-Huang/RAD_Report/refs/heads/main/SWI_2.jpg" width="400" height=auto>
+</td>
+</tr>
+</table>
+
+
 <!-- Others -->
 <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 <p>Other findings:<br><textarea rows="15" cols="120" name="Others" value=""></textarea></br><p>
@@ -137,8 +166,14 @@ function activeFunction() {
   else if (document.form.Fazekas.value == 1){Result_Fazekas = "Multiple punctate lesions";}
   else if (document.form.Fazekas.value == 2){Result_Fazekas = "Beginning confluency of lesions";}
   else{Result_Fazekas = "Large confluent lesions";}  
-  
-  
+
+  if (document.form.Microbleeder_N.value == 0){Result_N_Microbleeder = "0";}
+  else if (document.form.Microbleeder_N.value == 1){Result_N_Microbleeder = "1";}
+  else if (document.form.Microbleeder_N.value == 2){Result_N_Microbleeder = "2";}
+  else if (document.form.Microbleeder_N.value == 3){Result_N_Microbleeder = "3";}
+  else if (document.form.Microbleeder_N.value == 4){Result_N_Microbleeder = "4";}  
+  else{Result_N_Microbleeder = "More than 4";}
+    
   <!-- Others -->
   var Others = document.getElementsByName('Others')[0].value;
   if (Others == ""){
@@ -146,7 +181,7 @@ function activeFunction() {
   }  
   
 		
-  document.getElementById('Final_Report').innerHTML = "Brain MRI without enhancement for evaluating dementia, mainly including the sequences of T1WI, T2WI, T2FLAIR, DWI and T2*:\n\nGCA (Global cortical atrophy) scale: Average:"+ Average_GCA + " (Total:" + Total_GCA + ")\nThe definition of GCA scale:\n0: Normal volume / No ventricular enlargement\n1: Opening of sulci / Mild ventricular enlargement\n2: Volume loss of gyri / Moderate ventricular enlargement\n3: 'Knife blade' atrophy / Severe ventricular enlargement\n\nThe details of the GCA scale for each 13 regions are the following:\nSulcal dilatation:\nRight frontal lobe: " + document.form.GCA_RFL.value + ", Left frontal lobe: " + document.form.GCA_LFL.value + ",\nRight parieto-occipital lobe: " + document.form.GCA_RPOL.value + ", Left parieto-occipital lobe: " + document.form.GCA_LPOL.value + ",\nRight temporal lobe: " + document.form.GCA_RTL.value + ", Left temporal lobe: " + document.form.GCA_LTL.value + "\nVentricular dilatation:\nRight frontal horn: " + document.form.GCA_RFH.value + ", Left frontal horn: " + document.form.GCA_LFH.value + ",\nRight parieto-occipital horn: " + document.form.GCA_RPOH.value + ", Left parieto-occipital horn: " + document.form.GCA_LPOH.value + ",\nRight temporal horn: " + document.form.GCA_RTH.value + ", Left temporal horn: " + document.form.GCA_LTH.value + ",\nThird ventricle: " + document.form.GCA_3V.value + "\n\nMTA (Medial Temporal lobe Atrophy) scale: " + document.form.MTA.value + "\nThe definition of MTA scale:\n0: No atrophy\n1: Only widening of choroid fissure\n2: Also widening of temporal horn of lateral ventricle\n3: Moderate loss of hippocampal volume (decrease in height)\n4: Severe volume loss of hippocampus\n\nFazekas scale (White matter T2FLAIR hyperintensity lesions): " + document.form.Fazekas.value + "\nThe definition of Fazekas scale:\n0: None or a single punctate lesion\n1: Multiple punctate lesions\n2: Beginning confluency of lesions (bridging)\n3: Large confluent lesions\n\nOther findings:\n" + Others + "\n\nSummary:\nGCA scale(Average): " + Average_GCA + " (" + Result_GCA + ")" + "\nMTA scale: " + document.form.MTA.value + " (" + Result_MTA + ")\nFazekas scale: " + document.form.Fazekas.value + " (" + Result_Fazekas + ")";
+  document.getElementById('Final_Report').innerHTML = "Brain MRI without enhancement for evaluating dementia, mainly including the sequences of T1WI, T2WI, T2FLAIR, DWI and T2*:\n\nGCA (Global cortical atrophy) scale: Average:"+ Average_GCA + " (Total:" + Total_GCA + ")\nThe definition of GCA scale:\n0: Normal volume / No ventricular enlargement\n1: Opening of sulci / Mild ventricular enlargement\n2: Volume loss of gyri / Moderate ventricular enlargement\n3: 'Knife blade' atrophy / Severe ventricular enlargement\n\nThe details of the GCA scale for each 13 regions are the following:\nSulcal dilatation:\nRight frontal lobe: " + document.form.GCA_RFL.value + ", Left frontal lobe: " + document.form.GCA_LFL.value + ",\nRight parieto-occipital lobe: " + document.form.GCA_RPOL.value + ", Left parieto-occipital lobe: " + document.form.GCA_LPOL.value + ",\nRight temporal lobe: " + document.form.GCA_RTL.value + ", Left temporal lobe: " + document.form.GCA_LTL.value + "\nVentricular dilatation:\nRight frontal horn: " + document.form.GCA_RFH.value + ", Left frontal horn: " + document.form.GCA_LFH.value + ",\nRight parieto-occipital horn: " + document.form.GCA_RPOH.value + ", Left parieto-occipital horn: " + document.form.GCA_LPOH.value + ",\nRight temporal horn: " + document.form.GCA_RTH.value + ", Left temporal horn: " + document.form.GCA_LTH.value + ",\nThird ventricle: " + document.form.GCA_3V.value + "\n\nMTA (Medial Temporal lobe Atrophy) scale: " + document.form.MTA.value + "\nThe definition of MTA scale:\n0: No atrophy\n1: Only widening of choroid fissure\n2: Also widening of temporal horn of lateral ventricle\n3: Moderate loss of hippocampal volume (decrease in height)\n4: Severe volume loss of hippocampus\n\nFazekas scale (White matter T2FLAIR hyperintensity lesions): " + document.form.Fazekas.value + "\nThe definition of Fazekas scale:\n0: None or a single punctate lesion\n1: Multiple punctate lesions\n2: Beginning confluency of lesions (bridging)\n3: Large confluent lesions\n\nMicrobleeder evaluation:\nNumber of microbleeders: " + Result_N_Microbleeder + "\nEvidence of hemorrhage larger than 10mm: " + document.form.Microbleeder_L.value + "\nSuspicious Cerebral amyloid angiopathy(CAA): " + document.form.CAA.value + "\n\nOther findings:\n" + Others + "\n\nSummary:\nGCA scale(Average): " + Average_GCA + " (" + Result_GCA + ")" + "\nMTA scale: " + document.form.MTA.value + " (" + Result_MTA + ")\nFazekas scale: " + document.form.Fazekas.value + " (" + Result_Fazekas + ")\nNumber of microbleeders: " + Result_N_Microbleeder + "\nLarge hemorrhage(>10mm): " + document.form.Microbleeder_L.value + "\nSuspicious CAA: " + document.form.CAA.value;
 }
   </script>
 </body>
