@@ -5,7 +5,7 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Oropharyngeal Cancer Staging Form (Updated:2025/04/25)</u></b></font></p>
+		<p><font size=6><b><u>Oropharyngeal Cancer Staging Form (Updated:2025/10/04)</u></b></font></p>
 		
 		<p><font size=4>Imaging Report Form for Oropharyngeal Carcinoma AJCC 8th</font></p>
 <form name="form">
@@ -346,10 +346,8 @@ function activeFunction() {
   if (Stage_M == "M1") {Stage_Final = "Stage IVC";}
   } else {
   Stage_Final = "Stage I";
-  if (Stage_N == "N2") {Stage_Final = "Stage II";}
-  if (Stage_T == "T3" || Stage_T == "T4") {
-  if (Stage_N == "N0" || Stage_N == "N1") {Stage_Final = "Stage II";} else {Stage_Final = "Stage III";}
-  }  
+  if (Stage_N == "N2" || Stage_T == "T3") {Stage_Final = "Stage II";}
+  if (Stage_N == "N3" || Stage_T == "T4") {Stage_Final = "Stage III";}  
   if (Stage_M == "M1") {Stage_Final = "Stage IV";}
   }
     
