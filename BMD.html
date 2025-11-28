@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+ 		<title>Bone mineral density scan Form</title>
+ 	 </head>
+	 <body>
+    	
+		<p><font size=6><b><u>Bone mineral density scan Form (Updated:2025/11/28)</u></b></font></p>
+		
+<form name="form">
+
+<p><b>Patient information:</b></p>
+<p>Age:<input name="Age" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sex:<input name="Sex" type="radio" value="Male" checked="checked">Male or
+<input name="Sex" type="radio" value="Female">Female(Menopause age:<input name="Menopause" type="text" size="3">),</p>
+<p>------------------------------------------------------------------------------------------------------------------------</p>
+<p><b>Lumbar spine result:</b></p>
+<p>Average bone mineral density:<input name="L_BMD" type="text" size="5">g/cm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T-score:<input name="L_T" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z-score:<input name="L_Z" type="text" size="3"></p>
+<p>------------------------------------------------------------------------------------------------------------------------</p>
+<p><b>Left hip result:</b></p>
+<p>Average bone mineral density:<input name="LH_BMD" type="text" size="5">g/cm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T-score:<input name="LH_T" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z-score:<input name="LH_Z" type="text" size="3"></p>
+<p>------------------------------------------------------------------------------------------------------------------------</p>
+<p><b>Right hip result:</b></p>
+<p>Average bone mineral density:<input name="RH_BMD" type="text" size="5">g/cm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T-score:<input name="RH_T" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z-score:<input name="RH_Z" type="text" size="3"></p>
+
+
+<p>Other findings:<br><textarea rows="4" cols="100" name="Others" value=""></textarea></br><p>
+		
+<br><button type="button" onclick="activeFunction()">Show bone mineral density scan Report</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="refresh()">Clear</button>
+</form>
+<br><button onclick="copyFunction()">Copy Report</button>
+
+<br><textarea rows="35" cols="150" id="Final_Report" name="Final_Report"></textarea>
+	
+		
+<script>
+<!-- reload page -->
+function refresh()   
+{   
+window.location.reload();   
+}   
+
+<!-- Copy Function -->
+  function copyFunction() {
+  // Get the text field
+  var copyText = document.getElementById("Final_Report");
+
+  // Select the text field
+  copyText.select();
+   copyText.setSelectionRange(0, 99999); //For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  // alert("The report has been copied.");
+}   
+
+function activeFunction() {
+
+  Reference = "T-score";
+  if (document.form.Sex.value == "Male"){
+     if (document.form.Age.value < 50) {Reference = "Z-score";}
+  } else {
+     if (document.form.Menopause.value == "") {Reference = "Z-score";}
+  }
+
+  
+  if (document.form.Sex.value == "Female") {
+         if (document.form.Menopause.value == ""){
+	       Sex = "Female without menopause";
+		 } else {
+		   Sex = "Female with menopause at age of " + document.form.Menopause.value;
+		 }
+  } else {
+      Sex = "Male";
+  }
+
+
+//L-spine
+  if (document.form.L_BMD.value == ""){
+     Final_L_BMD_Result = "Not performed.";
+  } else {
+     if (Reference == "T-score"){
+	   L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of Osteoporosis (T-score <= -2.5)";
+	   if (document.form.L_T.value > -2.5) {L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of Low bone mass (-2.5 < T-score < -1)"};
+	   if (document.form.L_T.value >= -1) {L_BMD_Result = "The BMD of the lumbar spine is within normal limit (T-score >= -1)"};
+	 } else {
+       L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of below the expected range for age (Z-score <= -2)";
+	   if (document.form.L_Z.value >= -2) {L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of within the expected range for age (Z-score > -2)"};
+	 }
+	 Final_L_BMD_Result = "BMD: " + document.form.L_BMD.value + "g/cm2,    T-score: " + document.form.L_T.value + ",    Z-score: " + document.form.L_Z.value + ",\nInterpretation: " + L_BMD_Result;
+  }
+
+
+//Left Hip
+  if (document.form.LH_BMD.value == ""){
+     Final_LH_BMD_Result = "Not performed.";
+  } else {
+     if (Reference == "T-score"){
+	   LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of Osteoporosis (T-score <= -2.5)";
+	   if (document.form.LH_T.value > -2.5) {LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of Low bone mass (-2.5 < T-score < -1)"};
+	   if (document.form.LH_T.value >= -1) {LH_BMD_Result = "The BMD of the left hip is within normal limit (T-score >= -1)"};
+	 } else {
+       LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of below the expected range for age (Z-score <= -2)";
+	   if (document.form.LH_Z.value >= -2) {LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of within the expected range for age (Z-score > -2)"};
+	 }
+     Final_LH_BMD_Result = "BMD: " + document.form.LH_BMD.value + "g/cm2,    T-score: " + document.form.LH_T.value + ",    Z-score: " + document.form.LH_Z.value + ",\nInterpretation: " + LH_BMD_Result;
+  }
+
+
+//Right hip
+  if (document.form.RH_BMD.value == ""){
+     Final_RH_BMD_Result = "Not performed.";
+  } else {
+     if (Reference == "T-score"){
+	   RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of Osteoporosis (T-score <= -2.5)";
+	   if (document.form.RH_T.value > -2.5) {RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of Low bone mass (-2.5 < T-score < -1)"};
+	   if (document.form.RH_T.value >= -1) {RH_BMD_Result = "The BMD of the right hip is within normal limit (T-score >= -1)"};
+	 } else {
+       RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of below the expected range for age (Z-score <= -2)";
+	   if (document.form.RH_Z.value >= -2) {RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of within the expected range for age (Z-score > -2)"};
+	 }
+     Final_RH_BMD_Result = "BMD: " + document.form.RH_BMD.value + "g/cm2,    T-score: " + document.form.RH_T.value + ",    Z-score: " + document.form.RH_Z.value + ",\nInterpretation: " + RH_BMD_Result;
+  }
+
+
+  <!-- Others -->
+  var Others = document.getElementsByName('Others')[0].value;
+  if (Others == ""){
+  Others = "Nil";
+  }
+
+ document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Bone Mineral Density Scan #\n\n1.Patient Information:\nAge: " + document.form.Age.value + ",    Sex: " + Sex + "\n\n2.Reference: " + Reference + "\n\n3.The bone mineral density (BMD) of the following regions was measured using dual-energy X-ray absorptiometry (DEXA).\nThe BMD values, along with their corresponding standard deviations (SD) for T-scores and Z-scores, are summarized as follows:\n\nLumbar spine (L1-L4):\n" + Final_L_BMD_Result + "\n\nLeft hip:\n" + Final_LH_BMD_Result + "\n\nRight hip:\n" + Final_RH_BMD_Result + "\n\nOther Findings:\n" + Others;
+}    
+ 
+  </script>
+</body>
+</html>
