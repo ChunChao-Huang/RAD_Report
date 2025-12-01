@@ -5,7 +5,7 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Bone mineral density scan Form (Updated:2025/11/28)</u></b></font></p>
+		<p><font size=6><b><u>Bone mineral density scan Form (Updated:2025/12/01)</u></b></font></p>
 		
 <form name="form">
 
@@ -91,11 +91,11 @@ function activeFunction() {
   } else {
      if (Reference == "T-score"){
 	   L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of Osteoporosis (T-score <= -2.5)";
-	   if (document.form.L_T.value > -2.5) {L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of Low bone mass (-2.5 < T-score < -1)"};
-	   if (document.form.L_T.value >= -1) {L_BMD_Result = "The BMD of the lumbar spine is within normal limit (T-score >= -1)"};
+	   if (document.form.L_T.value > -2.5) {L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of Low bone mass (-2.5 < T-score < -1.0)"};
+	   if (document.form.L_T.value >= -1) {L_BMD_Result = "The BMD of the lumbar spine is within normal limit (T-score >= -1.0)"};
 	 } else {
-       L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of below the expected range for age (Z-score <= -2)";
-	   if (document.form.L_Z.value >= -2) {L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of within the expected range for age (Z-score > -2)"};
+       L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of below the expected range for age (Z-score <= -2.0)";
+	   if (document.form.L_Z.value >= -2) {L_BMD_Result = "The BMD of the lumbar spine is corresponding to the condition of within the expected range for age (Z-score > -2.0)"};
 	 }
 	 Final_L_BMD_Result = "BMD: " + document.form.L_BMD.value + "g/cm2,    T-score: " + document.form.L_T.value + ",    Z-score: " + document.form.L_Z.value + ",\nInterpretation: " + L_BMD_Result;
   }
@@ -107,11 +107,11 @@ function activeFunction() {
   } else {
      if (Reference == "T-score"){
 	   LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of Osteoporosis (T-score <= -2.5)";
-	   if (document.form.LH_T.value > -2.5) {LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of Low bone mass (-2.5 < T-score < -1)"};
-	   if (document.form.LH_T.value >= -1) {LH_BMD_Result = "The BMD of the left hip is within normal limit (T-score >= -1)"};
+	   if (document.form.LH_T.value > -2.5) {LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of Low bone mass (-2.5 < T-score < -1.0)"};
+	   if (document.form.LH_T.value >= -1) {LH_BMD_Result = "The BMD of the left hip is within normal limit (T-score >= -1.0)"};
 	 } else {
-       LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of below the expected range for age (Z-score <= -2)";
-	   if (document.form.LH_Z.value >= -2) {LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of within the expected range for age (Z-score > -2)"};
+       LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of below the expected range for age (Z-score <= -2.0)";
+	   if (document.form.LH_Z.value >= -2) {LH_BMD_Result = "The BMD of the left hip is corresponding to the condition of within the expected range for age (Z-score > -2.0)"};
 	 }
      Final_LH_BMD_Result = "BMD: " + document.form.LH_BMD.value + "g/cm2,    T-score: " + document.form.LH_T.value + ",    Z-score: " + document.form.LH_Z.value + ",\nInterpretation: " + LH_BMD_Result;
   }
@@ -123,11 +123,11 @@ function activeFunction() {
   } else {
      if (Reference == "T-score"){
 	   RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of Osteoporosis (T-score <= -2.5)";
-	   if (document.form.RH_T.value > -2.5) {RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of Low bone mass (-2.5 < T-score < -1)"};
-	   if (document.form.RH_T.value >= -1) {RH_BMD_Result = "The BMD of the right hip is within normal limit (T-score >= -1)"};
+	   if (document.form.RH_T.value > -2.5) {RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of Low bone mass (-2.5 < T-score < -1.0)"};
+	   if (document.form.RH_T.value >= -1) {RH_BMD_Result = "The BMD of the right hip is within normal limit (T-score >= -1.0)"};
 	 } else {
-       RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of below the expected range for age (Z-score <= -2)";
-	   if (document.form.RH_Z.value >= -2) {RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of within the expected range for age (Z-score > -2)"};
+       RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of below the expected range for age (Z-score <= -2.0)";
+	   if (document.form.RH_Z.value >= -2) {RH_BMD_Result = "The BMD of the right hip is corresponding to the condition of within the expected range for age (Z-score > -2.0)"};
 	 }
      Final_RH_BMD_Result = "BMD: " + document.form.RH_BMD.value + "g/cm2,    T-score: " + document.form.RH_T.value + ",    Z-score: " + document.form.RH_Z.value + ",\nInterpretation: " + RH_BMD_Result;
   }
