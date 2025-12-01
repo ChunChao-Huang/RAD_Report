@@ -17,16 +17,19 @@
 <p>Average bone mineral density:<input name="L_BMD" type="text" size="5">g/cm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 T-score:<input name="L_T" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Z-score:<input name="L_Z" type="text" size="3"></p>
+<p>BMD to Three decimal places, T-score and Z-score to Two decimal places.</p>
 <p>------------------------------------------------------------------------------------------------------------------------</p>
 <p><b>Left hip result:</b></p>
 <p>Average bone mineral density:<input name="LH_BMD" type="text" size="5">g/cm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 T-score:<input name="LH_T" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Z-score:<input name="LH_Z" type="text" size="3"></p>
+<p>BMD to Three decimal places, T-score and Z-score to Two decimal places.</p>
 <p>------------------------------------------------------------------------------------------------------------------------</p>
 <p><b>Right hip result:</b></p>
 <p>Average bone mineral density:<input name="RH_BMD" type="text" size="5">g/cm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 T-score:<input name="RH_T" type="text" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Z-score:<input name="RH_Z" type="text" size="3"></p>
+<p>BMD to Three decimal places, T-score and Z-score to Two decimal places.</p>
 
 
 <p>Other findings:<br><textarea rows="4" cols="100" name="Others" value=""></textarea></br><p>
@@ -136,7 +139,7 @@ function activeFunction() {
   Others = "Nil";
   }
 
- document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Bone Mineral Density Scan #\n\n1.Patient Information:\nAge: " + document.form.Age.value + ",    Sex: " + Sex + "\n\n2.Reference: " + Reference + "\n\n3.The bone mineral density (BMD) of the following regions was measured using dual-energy X-ray absorptiometry (DEXA).\nThe BMD values, along with their corresponding standard deviations (SD) for T-scores and Z-scores, are summarized as follows:\n\nLumbar spine (L1-L4):\n" + Final_L_BMD_Result + "\n\nLeft hip:\n" + Final_LH_BMD_Result + "\n\nRight hip:\n" + Final_RH_BMD_Result + "\n\nOther Findings:\n" + Others;
+ document.getElementById('Final_Report').innerHTML = "# Imaging Report Form for Bone Mineral Density Scan #\n\n1.Patient Information:\nAge: " + document.form.Age.value + ",    Sex: " + Sex + "\n\n2.Reference: " + Reference + "\n\n3.The bone mineral density (BMD) of the following regions was measured using dual-energy X-ray absorptiometry (DXA).\nThe BMD values, along with their corresponding standard deviations (SD) for T-scores and Z-scores, are summarized as follows:\n\nLumbar spine (L1-L4):\n" + Final_L_BMD_Result + "\n\nLeft hip:\n" + Final_LH_BMD_Result + "\n\nRight hip:\n" + Final_RH_BMD_Result + "\n\nOther Findings:\n" + Others;
 }    
  
   </script>
