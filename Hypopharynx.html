@@ -5,7 +5,7 @@
  	 </head>
 	 <body>
     	
-		<p><font size=6><b><u>Hypopharyngeal Cancer Staging Form (Updated:2025/04/25)</u></b></font></p>
+		<p><font size=6><b><u>Hypopharyngeal Cancer Staging Form (Updated:2025/12/16)</u></b></font></p>
 		
 		<p><font size=4>Imaging Report Form for Hypopharyngeal Carcinoma AJCC 8th</font></p>
 <form name="form">
@@ -290,9 +290,9 @@ function activeFunction() {
       
   if (document.form.ENE.checked){
   ENE = "■";
-  
-  if ((document.form.Node_Number.value == 1) && (document.form.N_Size.value <= 3) && (Contralateral == 0)){Stage_N = "N2a";}
-  else {Stage_N = "N3b";}
+  Stage_N = "N3b";
+//  if ((document.form.Node_Number.value == 1) && (document.form.N_Size.value <= 3) && (Contralateral == 0)){Stage_N = "N2a";}
+//  else {Stage_N = "N3b";}
   
   } else {
   ENE = "□";
